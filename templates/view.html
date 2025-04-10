@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>View Tender File</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f1f4f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .nav {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .nav a {
+      display: inline-block;
+      background-color: #007bff;
+      color: white;
+      padding: 8px 16px;
+      margin: 0 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.2s ease;
+    }
+
+    .nav a:hover {
+      background-color: #0056b3;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
+
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>{{ subdir }}</h2>
+    <div class="nav">
+      <a href="/">← Back</a>
+      <a href="/download/{{ subdir }}">Download as Excel</a>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Opening Date</th>
+          <th>Title</th>
+          <th>ID</th>
+          <th>Department</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tender in tenders %}
+        <tr>
+          <td>{{ loop.index }}</td>
+          <td>{{ tender.start_date }}</td>
+          <td>{{ tender.end_date }}</td>
+          <td>{{ tender.opening_date }}</td>
+          <td>{{ tender.title }}</td>
+          <td>{{ tender.tender_id }}</td>
+          <td>{{ tender.department }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
