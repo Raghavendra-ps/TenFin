@@ -1,74 +1,136 @@
 import os
 import re
-from typing import List
+from datetime import datetime
 
-TENDER_START_PATTERN = re.compile(r"^\d+\.\s*$")
+TENDER_BLOCK_PATTERN = re.compile(r"^\d+\.\s*$")
 
-def match_block(block_lines: List[str], keywords: List[str], use_regex: bool) -> List[str]:
-    matches = []
-    for line in block_lines:
-        for pattern in keywords:
-            flags = re.IGNORECASE
-            if use_regex:
-                if re.search(pattern, line, flags):
-                    matches.append(pattern)
-            else:
-                if pattern.lower() in line.lower():
-                    matches.append(pattern)
-    return list(set(matches))
+INDIAN_STATES = [
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
+    "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
+    "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya",
+    "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim",
+    "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand",
+    "West Bengal", "Delhi", "Jammu and Kashmir", "Ladakh", "Puducherry",
+    "Chandigarh", "Andaman and Nicobar Islands", "Dadra and Nagar Haveli and Daman and Diu", "Lakshadweep"
+]
 
-def highlight_line(line: str, matches: List[str], use_regex: bool) -> str:
-    for m in matches:
-        try:
-            if use_regex:
-                line = re.sub(f"({m})", r">>>\1<<<", line, flags=re.IGNORECASE)
-            else:
-                pattern = re.escape(m)
-                line = re.sub(f"({pattern})", r">>>\1<<<", line, flags=re.IGNORECASE)
-        except re.error:
-            continue
-    return line
+def parse_tender_blocks(file_path):
+    with open(file_path, "r", encoding="utf-8") as f:
+        lines = f.readlines()
 
-def run_filter(
-    base_folder: str,
-    tender_filename: str,
-    keywords: List[str],
-    use_regex: bool,
-    filter_name: str
-) -> str:
-    selected_file = os.path.join(base_folder, tender_filename)
-    if not os.path.exists(selected_file):
-        raise FileNotFoundError(f"Tender file not found: {selected_file}")
-
-    filtered_dir = os.path.join(base_folder, "Filtered Tenders")
-    subdir_name = f"{filter_name} Tenders"
-    output_path = os.path.join(filtered_dir, subdir_name)
-    os.makedirs(output_path, exist_ok=True)
-    output_file = os.path.join(output_path, "Filtered_Tenders.txt")
-
-    filtered_blocks = []
+    blocks = []
     current_block = []
 
-    with open(selected_file, "r", encoding="utf-8") as infile:
-        for line in infile:
-            if TENDER_START_PATTERN.match(line):
-                if current_block:
-                    matched = match_block(current_block, keywords, use_regex)
-                    if matched:
-                        highlighted = [highlight_line(l, matched, use_regex) for l in current_block]
-                        filtered_blocks.append("".join(highlighted) + "\n")
-                current_block = [line]
-            else:
-                current_block.append(line)
+    for line in lines:
+        if TENDER_BLOCK_PATTERN.match(line.strip()):
+            if current_block:
+                blocks.append(current_block)
+            current_block = [line.strip()]
+        else:
+            current_block.append(line.strip())
 
-        if current_block:
-            matched = match_block(current_block, keywords, use_regex)
-            if matched:
-                highlighted = [highlight_line(l, matched, use_regex) for l in current_block]
-                filtered_blocks.append("".join(highlighted))
+    if current_block:
+        blocks.append(current_block)
 
-    with open(output_file, "w", encoding="utf-8") as outfile:
-        outfile.writelines(filtered_blocks)
+    print("TOTAL BLOCKS PARSED:", len(blocks))
+    for block in blocks:
+        print("\n".join(block))
+        print("-" * 50)
 
-    return output_file
+    return blocks
 
+def extract_tender_info(block):
+    tender = {
+        "start_date": "",
+        "end_date": "",
+        "opening_date": "",
+        "title": "",
+        "tender_id": "",
+        "department": "",
+        "state": ""
+    }
+
+    date_lines = block[:3]
+    tender["start_date"] = date_lines[0] if len(date_lines) > 0 else ""
+    tender["end_date"] = date_lines[1] if len(date_lines) > 1 else ""
+    tender["opening_date"] = date_lines[2] if len(date_lines) > 2 else ""
+
+    for line in block:
+        if line.startswith("[") and "]" in line:
+            if not tender["title"]:
+                tender["title"] = line.strip("[]")
+            elif "tender" in line.lower():
+                tender["tender_id"] = line.strip("[]")
+        if "department" in line.lower():
+            tender["department"] = line
+        if any(state.lower() in line.lower() for state in INDIAN_STATES):
+            tender["state"] = line.strip()
+
+    print("TENDER EXTRACTED:", tender)
+    return tender
+
+def matches_filters(tender, keywords, use_regex, state, start_date, end_date):
+    if state and state.lower() not in tender["state"].lower():
+        return False
+
+    if start_date:
+        try:
+            tender_start = datetime.strptime(tender["start_date"], "%d-%m-%Y")
+            filter_start = datetime.strptime(start_date, "%Y-%m-%d")
+            if tender_start < filter_start:
+                return False
+        except Exception as e:
+            print("Start date parse error:", e)
+
+    if end_date:
+        try:
+            tender_end = datetime.strptime(tender["end_date"], "%d-%m-%Y")
+            filter_end = datetime.strptime(end_date, "%Y-%m-%d")
+            if tender_end > filter_end:
+                return False
+        except Exception as e:
+            print("End date parse error:", e)
+
+    if keywords:
+        content = " ".join(tender.values())
+        if use_regex:
+            try:
+                return any(re.search(kw, content, re.IGNORECASE) for kw in keywords)
+            except re.error as e:
+                print("Regex error:", e)
+                return False
+        else:
+            return any(kw.lower() in content.lower() for kw in keywords)
+
+    return True
+
+def run_filter(base_folder, tender_filename, keywords, use_regex, filter_name, state, start_date, end_date):
+    print("=== FILTER CONFIG ===")
+    print("Keywords:", keywords)
+    print("Regex?:", use_regex)
+    print("State Filter:", state)
+    print("Start Date:", start_date)
+    print("End Date:", end_date)
+    print("======================")
+
+    tender_path = os.path.join(base_folder, tender_filename)
+    blocks = parse_tender_blocks(tender_path)
+
+    filtered_blocks = []
+
+    for block in blocks:
+        tender = extract_tender_info(block)
+        if matches_filters(tender, keywords, use_regex, state, start_date, end_date):
+            print("✅ MATCHED:", tender["title"])
+            filtered_blocks.append("\n".join(block))
+        else:
+            print("❌ NOT MATCHED:", tender["title"])
+
+    output_folder = os.path.join(base_folder, "Filtered Tenders", f"{filter_name} Tenders")
+    os.makedirs(output_folder, exist_ok=True)
+
+    output_path = os.path.join(output_folder, "Filtered_Tenders.txt")
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write("\n\n".join(filtered_blocks))
+
+    return output_path

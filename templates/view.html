@@ -12,7 +12,7 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 40px auto;
       background-color: white;
       padding: 30px;
@@ -26,16 +26,16 @@
     }
 
     .nav {
-      text-align: center;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
       margin-bottom: 25px;
     }
 
     .nav a {
-      display: inline-block;
       background-color: #007bff;
       color: white;
       padding: 8px 16px;
-      margin: 0 10px;
       border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
@@ -50,12 +50,15 @@
       width: 100%;
       border-collapse: collapse;
       margin-top: 10px;
+      table-layout: fixed;
+      word-wrap: break-word;
     }
 
     th, td {
       border: 1px solid #ccc;
       padding: 10px;
       text-align: left;
+      vertical-align: top;
     }
 
     th {
@@ -66,25 +69,30 @@
     tr:nth-child(even) {
       background-color: #fafafa;
     }
+
+    td:nth-child(1) {
+      width: 50px; /* slim S.No column */
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>{{ subdir }}</h2>
     <div class="nav">
-      <a href="/">← Back</a>
-      <a href="/download/{{ subdir }}">Download as Excel</a>
+      <a href="/download/{{ subdir }}">⬇ Download Excel</a>
+      <a href="/">🏠 Back to Dashboard</a>
     </div>
+
+    <h2>{{ subdir }}</h2>
 
     <table>
       <thead>
         <tr>
-          <th>#</th>
-          <th>Start Date</th>
-          <th>End Date</th>
+          <th>S.No</th>
+          <th>E-Publish Date</th>
+          <th>Closing Date</th>
           <th>Opening Date</th>
-          <th>Title</th>
           <th>ID</th>
+          <th>Title</th>
           <th>Department</th>
         </tr>
       </thead>
@@ -95,8 +103,8 @@
           <td>{{ tender.start_date }}</td>
           <td>{{ tender.end_date }}</td>
           <td>{{ tender.opening_date }}</td>
-          <td>{{ tender.title }}</td>
           <td>{{ tender.tender_id }}</td>
+          <td>{{ tender.title }}</td>
           <td>{{ tender.department }}</td>
         </tr>
         {% endfor %}
@@ -105,3 +113,4 @@
   </div>
 </body>
 </html>
+

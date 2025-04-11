@@ -177,4 +177,3 @@ async def delete_tender_set(subdir: str):
             os.remove(os.path.join(folder, f))
         os.rmdir(folder)
     return RedirectResponse(url="/", status_code=302)
-

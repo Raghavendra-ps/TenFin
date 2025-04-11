@@ -1,120 +1,152 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Run New Filter</title>
+  <title>Filter Tender</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f1f4f9;
+      background-color: #f3f4f6;
       margin: 0;
       padding: 0;
     }
 
     .container {
-      max-width: 700px;
+      max-width: 650px;
       margin: 40px auto;
       background-color: white;
-      padding: 30px;
+      padding: 30px 40px;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     }
 
     h2 {
-      margin-bottom: 20px;
       text-align: center;
+      margin-bottom: 25px;
     }
 
-    form label {
-      display: block;
-      margin-top: 15px;
+    .nav {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      background-color: #007bff;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 6px;
       font-weight: bold;
     }
 
-    form input[type="text"],
-    form select {
-      width: 100%;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    select {
       padding: 10px;
-      margin-top: 5px;
       border: 1px solid #ccc;
       border-radius: 6px;
-      font-size: 1rem;
+      font-size: 15px;
     }
 
-    .checkbox {
-      margin-top: 20px;
+    .checkbox-wrapper {
       display: flex;
       align-items: center;
+      gap: 10px;
+      margin-top: 5px;
     }
 
-    .checkbox input {
-      margin-right: 10px;
+    .checkbox-wrapper input[type="checkbox"] {
       transform: scale(1.2);
     }
 
-    .checkbox label {
-      font-weight: normal;
-      margin: 0;
-      font-size: 0.95rem;
-      color: #444;
-    }
-
     button {
-      margin-top: 25px;
-      background-color: #007bff;
+      padding: 12px;
+      background-color: #28a745;
       color: white;
-      padding: 10px 18px;
       border: none;
       border-radius: 6px;
-      font-size: 1rem;
-      font-weight: bold;
+      font-size: 16px;
       cursor: pointer;
-      transition: background-color 0.2s ease;
+      font-weight: bold;
     }
 
     button:hover {
-      background-color: #0056b3;
-    }
-
-    .back-link {
-      display: inline-block;
-      margin-top: 20px;
-      text-decoration: none;
-      color: #007bff;
-      text-align: center;
-    }
-
-    .back-link:hover {
-      text-decoration: underline;
+      background-color: #218838;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h2>Run New Tender Filter</h2>
-    <form method="post" action="/run-filter">
-      <label for="keywords">Keywords (comma-separated):</label>
-      <input type="text" name="keywords" required placeholder="e.g. manpower, supply">
+    <div class="nav">
+      <a href="/">🏠 Back to Dashboard</a>
+    </div>
 
-      <div class="checkbox">
-        <input type="checkbox" name="regex" id="regex">
-        <label for="regex">Match using advanced patterns (regex)? (for partial words or symbols)</label>
+    <h2>Filter Tender</h2>
+
+    <form action="/run-filter" method="post">
+      <div class="form-group">
+        <label for="filter_name">Save tender list as</label>
+        <input type="text" id="filter_name" name="filter_name" required>
       </div>
 
-      <label for="filter_name">Save tender list as:</label>
-      <input type="text" name="filter_name" required placeholder="e.g. Manpower">
+      <div class="form-group">
+        <label for="file">Select tender file</label>
+        <select id="file" name="file">
+          {% for tender_file in tender_files %}
+          <option value="{{ tender_file }}">{{ tender_file }}</option>
+          {% endfor %}
+        </select>
+      </div>
 
-      <label for="file">Choose Tender File:</label>
-      <select name="file" required>
-        {% for fname in tender_files %}
-          <option value="{{ fname }}">{{ fname }}</option>
-        {% endfor %}
-      </select>
+      <div class="form-group">
+        <label for="state">Select state</label>
+        <select id="state" name="state">
+          <option value="">-- Any State --</option>
+          {% for state in states %}
+          <option value="{{ state }}">{{ state }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="start_date">Start date</label>
+        <input type="date" id="start_date" name="start_date">
+      </div>
+
+      <div class="form-group">
+        <label for="end_date">End date</label>
+        <input type="date" id="end_date" name="end_date">
+      </div>
+
+      <div class="form-group">
+        <label for="keywords">Keywords (comma-separated)</label>
+        <input type="text" id="keywords" name="keywords" placeholder="e.g. roads, lighting, water">
+      </div>
+
+      <div class="form-group checkbox-wrapper">
+        <input type="checkbox" id="regex" name="regex">
+        <label for="regex">Use Regular Expressions</label>
+      </div>
 
       <button type="submit">Run Filter</button>
     </form>
-
-    <a href="/" class="back-link">← Back to Dashboard</a>
   </div>
 </body>
 </html>
