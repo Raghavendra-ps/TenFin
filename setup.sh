@@ -1,6 +1,5 @@
 #!/bin/bash
 # TenFin Setup Script
-
 # Stop on any error
 set -e
 
@@ -41,7 +40,7 @@ DASHBOARD_PY="$SCRIPT_DIR/dashboard.py"
 echo "🔨 Updating BASE_PATH in $DASHBOARD_PY..."
 python3 -c "
 filepath = '$DASHBOARD_PY'
-new_base_path = '$SCRAPED_DATA_DIR'
+new_base_path = '/root/TenFin/scraped_data'
 with open(filepath, 'r') as f:
     lines = f.readlines()
 with open(filepath, 'w') as f:
@@ -52,6 +51,24 @@ with open(filepath, 'w') as f:
             f.write(line)
 " || {
     echo "❌ Failed to update BASE_PATH in dashboard.py using Python."
+    exit 1
+}
+# 4. Update the save path in scrape.py
+SCRAPE_PY="$SCRIPT_DIR/scrape.py"
+echo "🔨 Updating SAVE_DIR in $SCRAPE_PY..."
+python3 -c "
+filepath = '$SCRAPE_PY'
+new_save_path = '/TenFin/scraped_data/Filtered Tenders'
+with open(filepath, 'r') as f:
+    lines = f.readlines()
+with open(filepath, 'w') as f:
+    for line in lines:
+        if line.startswith('SAVE_DIR ='):
+            f.write(f'SAVE_DIR = \"{new_save_path}\"\\n')
+        else:
+            f.write(line)
+" || {
+    echo "❌ Failed to update SAVE_DIR in scrape.py using Python."
     exit 1
 }
 # Delete the temporary file

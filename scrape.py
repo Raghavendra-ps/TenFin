@@ -11,7 +11,7 @@ import logging
 import datetime
 
 # === CONFIG ===
-SAVE_DIR = "/mnt/dietpi_userdata/nextcloud_data/__groupfolders/7"
+SAVE_DIR = "/root/TenFin/scraped_data/Filtered Tenders"
 BASE_URL = "https://eprocure.gov.in/eprocure/app?component=%24TablePages.linkPage&page=FrontEndAdvancedSearchResult&service=direct&session=T&sp=AFrontEndAdvancedSearchResult%2Ctable&sp={}"
 MAX_PAGES = 150
 RETRY_LIMIT = 3
