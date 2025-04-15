@@ -7,21 +7,13 @@ from filter_engine import run_filter
 from openpyxl import Workbook
 from tempfile import NamedTemporaryFile
 
-INDIAN_STATES = [
-    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-    "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
-    "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya",
-    "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim",
-    "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand",
-    "West Bengal", "Delhi", "Jammu and Kashmir", "Ladakh", "Puducherry",
-    "Chandigarh", "Andaman and Nicobar Islands", "Dadra and Nagar Haveli and Daman and Diu", "Lakshadweep"
-]
-
+# === CONFIG ===
 BASE_PATH = "/mnt/dietpi_userdata/nextcloud_data/__groupfolders/7"
 FILTERED_PATH = os.path.join(BASE_PATH, "Filtered Tenders")
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
+
 
 @app.get("/", response_class=HTMLResponse)
 async def homepage(request: Request):
@@ -30,6 +22,7 @@ async def homepage(request: Request):
         if os.path.isdir(os.path.join(FILTERED_PATH, name))
     ]
     return templates.TemplateResponse("index.html", {"request": request, "subdirs": subdirs})
+
 
 TENDER_BLOCK_PATTERN = re.compile(r"^\d+\.\s*$")
 
@@ -44,7 +37,7 @@ def parse_tenders_from_file(filepath):
         if TENDER_BLOCK_PATTERN.match(line.strip()):
             if current_block:
                 blocks.append(current_block)
-            current_block = []
+            current_block = [line.strip()]
         else:
             current_block.append(line.strip())
 
@@ -52,7 +45,6 @@ def parse_tenders_from_file(filepath):
         blocks.append(current_block)
 
     tenders = []
-
     for block in blocks:
         tender = {
             "start_date": "",
@@ -63,42 +55,24 @@ def parse_tenders_from_file(filepath):
             "department": ""
         }
 
-        date_lines = [line for line in block if re.search(r"\d{2}-[A-Za-z]{3}-\d{4}", line)]
-        if len(date_lines) >= 1:
-            tender["start_date"] = date_lines[0]
-        if len(date_lines) >= 2:
-            tender["opening_date"] = date_lines[1]
-        if len(date_lines) >= 3:
-            tender["end_date"] = date_lines[2]
-
-        bracketed_items = [line for line in block if re.match(r"\[.*\]", line)]
-        id_part_1 = ""
-        id_part_2 = ""
-
-        for item in bracketed_items:
-            if "/" in item:
-                id_part_1 = item
-            elif re.match(r"\[2025_.+_.+_.+\]", item):
-                id_part_2 = item
-
-        tender["tender_id"] = f"{id_part_1}{id_part_2}".strip()
-
-        for item in bracketed_items:
-            if not re.match(r"\[2025_.+_.+_.+\]", item) and "/" not in item:
-                tender["title"] = item.strip("[]")
-                break
+        date_lines = block[:3]
+        tender["start_date"] = date_lines[0] if len(date_lines) > 0 else ""
+        tender["end_date"] = date_lines[1] if len(date_lines) > 1 else ""
+        tender["opening_date"] = date_lines[2] if len(date_lines) > 2 else ""
 
         for line in block:
+            if line.startswith("[") and "]" in line:
+                if not tender["title"]:
+                    tender["title"] = line.strip("[]")
+                elif "tender" in line.lower():
+                    tender["tender_id"] = line.strip("[]")
             if "department" in line.lower():
                 tender["department"] = line
-                break
-        else:
-            if len(block) >= 1:
-                tender["department"] = block[-1]
 
         tenders.append(tender)
 
     return tenders
+
 
 @app.get("/view/{subdir}", response_class=HTMLResponse)
 async def view_tenders(request: Request, subdir: str):
@@ -117,6 +91,7 @@ async def view_tenders(request: Request, subdir: str):
         "tenders": tenders
     })
 
+
 @app.get("/download/{subdir}")
 async def download_tender_file(subdir: str):
     file_path = os.path.join(FILTERED_PATH, subdir, "Filtered_Tenders.txt")
@@ -128,15 +103,15 @@ async def download_tender_file(subdir: str):
     wb = Workbook()
     ws = wb.active
     ws.title = "Tenders"
-    ws.append(["E-Publish Date", "Closing Date", "Opening Date", "ID", "Title", "Department"])
+    ws.append(["Start Date", "End Date", "Opening Date", "Title", "Tender ID", "Department"])
 
     for tender in tenders:
         ws.append([
             tender["start_date"],
             tender["end_date"],
             tender["opening_date"],
-            tender["tender_id"],
             tender["title"],
+            tender["tender_id"],
             tender["department"]
         ])
 
@@ -148,6 +123,7 @@ async def download_tender_file(subdir: str):
             media_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
 
+
 @app.get("/run-filter", response_class=HTMLResponse)
 async def run_filter_form(request: Request):
     tender_files = sorted([
@@ -156,20 +132,20 @@ async def run_filter_form(request: Request):
     ])
     return templates.TemplateResponse("run_filter.html", {
         "request": request,
-        "tender_files": tender_files,
-        "states": INDIAN_STATES
+        "tender_files": tender_files
     })
+
 
 @app.post("/run-filter", response_class=HTMLResponse)
 async def run_filter_submit(
     request: Request,
+    keywords: str = Form(...),
+    regex: bool = Form(False),
     filter_name: str = Form(...),
     file: str = Form(...),
-    state: str = Form(""),
-    start_date: str = Form(""),
-    end_date: str = Form(""),
-    keywords: str = Form(""),
-    regex: bool = Form(False)
+    state: str = Form(...),
+    start_date: str = Form(...),
+    end_date: str = Form(...)
 ):
     try:
         keyword_list = [kw.strip() for kw in keywords.split(",") if kw.strip()]
@@ -190,16 +166,11 @@ async def run_filter_submit(
             "result_path": result_path
         })
     except Exception as e:
-        tender_files = sorted([
-            f for f in os.listdir(BASE_PATH)
-            if f.startswith("Final_Tender_List") and f.endswith(".txt")
-        ])
-        return templates.TemplateResponse("run_filter.html", {
+        return templates.TemplateResponse("error.html", {
             "request": request,
-            "tender_files": tender_files,
-            "states": INDIAN_STATES,
             "error": str(e)
         })
+
 
 @app.get("/delete/{subdir}")
 async def delete_tender_set(subdir: str):
