@@ -3,3 +3,5 @@ uvicorn
 jinja2
 openpyxl
 python-multipart
+bs4
+playwright

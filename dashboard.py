@@ -3,7 +3,7 @@ from fastapi.responses import FileResponse, HTMLResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 import os
 import re
-from filter_engine import run_filter
+from filter_engine import run_filter, INDIAN_STATES # Import the INDIAN_STATES list
 from openpyxl import Workbook
 from tempfile import NamedTemporaryFile
 
@@ -132,7 +132,8 @@ async def run_filter_form(request: Request):
     ])
     return templates.TemplateResponse("run_filter.html", {
         "request": request,
-        "tender_files": tender_files
+        "tender_files": tender_files,
+        "states": INDIAN_STATES  # Pass the INDIAN_STATES list to the template
     })
 
 

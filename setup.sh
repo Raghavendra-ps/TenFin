@@ -28,6 +28,13 @@ mkdir -p "$SCRAPED_DATA_DIR" || {
     echo "❌ Failed to create scraped data directory."
     exit 1
 }
+# Create the Filtered Tenders subdirectory
+FILTERED_PATH="$SCRAPED_DATA_DIR/Filtered Tenders"
+echo "📁 Creating filtered data directory: $FILTERED_PATH"
+mkdir -p "$FILTERED_PATH" || {
+    echo "❌ Failed to create filtered data directory."
+    exit 1
+}
 
 # 3. Update the base path in dashboard.py
 DASHBOARD_PY="$SCRIPT_DIR/dashboard.py"
