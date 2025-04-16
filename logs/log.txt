@@ -1,0 +1,155 @@
+
+
+======== 2025-04-16 ========
+13:15:39 [INFO] 🚀 Starting concurrent scrape
+13:15:39 [INFO] 📄 Fetching Page 1 (Attempt 1)
+13:15:39 [INFO] 📄 Fetching Page 2 (Attempt 1)
+13:15:39 [INFO] 📄 Fetching Page 3 (Attempt 1)
+13:15:39 [INFO] 📄 Fetching Page 4 (Attempt 1)
+13:15:39 [INFO] 📄 Fetching Page 5 (Attempt 1)
+13:15:39 [INFO] 📄 Fetching Page 6 (Attempt 1)
+13:15:39 [INFO] 📄 Fetching Page 7 (Attempt 1)
+13:15:39 [INFO] 📄 Fetching Page 8 (Attempt 1)
+13:15:39 [INFO] 📄 Fetching Page 9 (Attempt 1)
+13:15:39 [INFO] 📄 Fetching Page 10 (Attempt 1)
+13:15:44 [ERROR] ❌ Error on Page 3: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:44 [INFO] 📄 Fetching Page 3 (Attempt 2)
+13:15:44 [ERROR] ❌ Error on Page 3: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:44 [INFO] 📄 Fetching Page 3 (Attempt 3)
+13:15:44 [ERROR] ❌ Error on Page 3: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [ERROR] ❌ Error on Page 8: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [INFO] 📄 Fetching Page 8 (Attempt 2)
+13:15:54 [ERROR] ❌ Error on Page 8: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [INFO] 📄 Fetching Page 8 (Attempt 3)
+13:15:54 [ERROR] ❌ Error on Page 8: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [ERROR] ❌ Error on Page 9: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [INFO] 📄 Fetching Page 9 (Attempt 2)
+13:15:54 [ERROR] ❌ Error on Page 9: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [INFO] 📄 Fetching Page 9 (Attempt 3)
+13:15:54 [ERROR] ❌ Error on Page 9: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [ERROR] ❌ Error on Page 5: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [INFO] 📄 Fetching Page 5 (Attempt 2)
+13:15:54 [ERROR] ❌ Error on Page 5: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [INFO] 📄 Fetching Page 5 (Attempt 3)
+13:15:54 [ERROR] ❌ Error on Page 5: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [ERROR] ❌ Error on Page 10: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [INFO] 📄 Fetching Page 10 (Attempt 2)
+13:15:54 [ERROR] ❌ Error on Page 10: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:54 [INFO] 📄 Fetching Page 10 (Attempt 3)
+13:15:54 [ERROR] ❌ Error on Page 10: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [ERROR] ❌ Error on Page 1: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [INFO] 📄 Fetching Page 1 (Attempt 2)
+13:15:59 [ERROR] ❌ Error on Page 1: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [INFO] 📄 Fetching Page 1 (Attempt 3)
+13:15:59 [ERROR] ❌ Error on Page 1: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [ERROR] ❌ Error on Page 7: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [INFO] 📄 Fetching Page 7 (Attempt 2)
+13:15:59 [ERROR] ❌ Error on Page 7: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [INFO] 📄 Fetching Page 7 (Attempt 3)
+13:15:59 [ERROR] ❌ Error on Page 7: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [ERROR] ❌ Error on Page 6: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [INFO] 📄 Fetching Page 6 (Attempt 2)
+13:15:59 [ERROR] ❌ Error on Page 6: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [INFO] 📄 Fetching Page 6 (Attempt 3)
+13:15:59 [ERROR] ❌ Error on Page 6: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [ERROR] ❌ Error on Page 4: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [INFO] 📄 Fetching Page 4 (Attempt 2)
+13:15:59 [ERROR] ❌ Error on Page 2: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:15:59 [INFO] 📄 Fetching Page 2 (Attempt 2)
+13:16:04 [ERROR] ❌ Error on Page 4: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:16:04 [INFO] 📄 Fetching Page 4 (Attempt 3)
+13:16:04 [ERROR] ❌ Error on Page 4: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:16:09 [ERROR] ❌ Error on Page 2: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:16:09 [INFO] 📄 Fetching Page 2 (Attempt 3)
+13:16:09 [ERROR] ❌ Error on Page 2: Page.goto: net::ERR_SSL_VERSION_OR_CIPHER_MISMATCH at https://eprocure.gov.in/eprocure/app
+Call log:
+  - navigating to "https://eprocure.gov.in/eprocure/app", waiting until "networkidle"
+
+13:16:09 [INFO] 🛑 Stopping at Page 1: Duplicate or empty.
