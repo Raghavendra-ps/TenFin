@@ -12,138 +12,80 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { font-size: 16px; }
         body {
-          font-family: 'Roboto', sans-serif;
-          background-color: #f1f4f9; /* Light background */
-          color: #333;
-          line-height: 1.6;
-          padding-top: 40px;
+          font-family: 'Roboto', sans-serif; background-color: #f1f4f9;
+          color: #333; line-height: 1.6; padding-top: 40px;
         }
         .container {
-          max-width: 650px; /* Suitable width for forms */
-          margin: 40px auto;
-          padding: 30px 40px;
-          background-color: #ffffff;
-          border-radius: 8px;
+          max-width: 650px; margin: 40px auto; padding: 30px 40px;
+          background-color: #ffffff; border-radius: 8px;
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
         h2 {
-          text-align: center;
-          margin-bottom: 30px; /* More space after heading */
-          font-size: 1.6rem;
-          font-weight: 500;
-          color: #1a2a45; /* Dark blue heading */
+          text-align: center; margin-bottom: 30px; font-size: 1.6rem;
+          font-weight: 500; color: #1a2a45;
         }
 
-        form {
-          display: flex;
-          flex-direction: column;
-          gap: 22px; /* Spacing between form groups */
-        }
+        form { display: flex; flex-direction: column; gap: 22px; }
+        .form-group { display: flex; flex-direction: column; }
 
-        .form-group {
-          display: flex;
-          flex-direction: column;
-        }
+        label { font-weight: 500; margin-bottom: 8px; font-size: 0.95rem; color: #495057; }
 
-        label {
-          font-weight: 500;
-          margin-bottom: 8px; /* Space between label and input */
-          font-size: 0.95rem;
-          color: #495057;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        select {
-          padding: 10px 12px;
-          border: 1px solid #ced4da; /* Standard border color */
-          border-radius: 5px;
-          font-size: 1rem; /* Match base font size */
-          font-family: inherit; /* Use body font */
+        /* Input and Select Styling */
+        input[type="text"], input[type="date"], select {
+          padding: 10px 12px; border: 1px solid #ced4da; border-radius: 5px;
+          font-size: 1rem; font-family: inherit;
           transition: border-color 0.2s ease, box-shadow 0.2s ease;
         }
-        input[type="text"]:focus,
-        input[type="date"]:focus,
-        select:focus {
-            border-color: #80bdff; /* Blue border on focus */
-            outline: 0;
-            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); /* Subtle glow on focus */
+        input[type="text"]:focus, input[type="date"]:focus, select:focus {
+            border-color: #80bdff; outline: 0;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
         }
-
         select {
-            /* Appearance for select dropdown */
-            appearance: none; /* Remove default arrow */
-            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" fill="%236c757d"><path d="M0 0l5 5 5-5z"/></svg>'); /* Custom arrow */
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            background-size: 10px 5px;
-            padding-right: 30px; /* Space for the arrow */
+            appearance: none;
+            background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="5" fill="%236c757d"><path d="M0 0l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat; background-position: right 12px center;
+            background-size: 10px 5px; padding-right: 30px; cursor: pointer;
+            background-color: #fff; /* Ensure background for custom arrow */
         }
 
-        .checkbox-wrapper {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          margin-top: 5px;
+        /* Keyword and Regex Row */
+        .keyword-regex-group {
+            display: flex; align-items: flex-end; gap: 15px;
         }
-        .checkbox-wrapper input[type="checkbox"] {
-          width: 1.1em; /* Slightly larger checkbox */
-          height: 1.1em;
-          cursor: pointer;
+        .keyword-input-wrapper { flex-grow: 1; }
+        .regex-checkbox-wrapper {
+          display: flex; align-items: center; gap: 8px;
+          padding-bottom: 10px; flex-shrink: 0;
         }
-         .checkbox-wrapper label {
-             margin-bottom: 0; /* Align label vertically */
-             font-weight: 400; /* Normal weight for checkbox label */
-             color: #333;
-             cursor: pointer;
+        .regex-checkbox-wrapper input[type="checkbox"] { width: 1.1em; height: 1.1em; cursor: pointer; }
+        .regex-checkbox-wrapper label { margin-bottom: 0; font-weight: 400; color: #333; cursor: pointer; font-size: 0.9rem; }
+
+        /* Regex Help Link */
+        .regex-help {
+            font-size: 0.85rem; margin-top: -15px; margin-bottom: 10px;
+            text-align: left;
         }
+         .regex-help a { color: #007bff; text-decoration: none; }
+         .regex-help a:hover { text-decoration: underline; }
 
         /* Submit Button Style */
         button[type="submit"] {
-          padding: 12px 20px;
-          background-color: #28a745; /* Success green */
-          color: white;
-          border: none;
-          border-radius: 5px;
-          font-size: 1rem;
-          cursor: pointer;
-          font-weight: 500;
-          transition: background-color 0.2s ease, box-shadow 0.2s ease;
-          margin-top: 10px; /* Space above submit button */
+          padding: 12px 20px; background-color: #28a745; color: white; border: none;
+          border-radius: 5px; font-size: 1rem; cursor: pointer; font-weight: 500;
+          transition: background-color 0.2s ease, box-shadow 0.2s ease; margin-top: 10px;
         }
-        button[type="submit"]:hover {
-          background-color: #218838;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        button[type="submit"]:focus {
-            outline: 2px solid rgba(40, 167, 69, 0.5); /* Focus ring for success button */
-            outline-offset: 2px;
-        }
+        button[type="submit"]:hover { background-color: #218838; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+        button[type="submit"]:focus { outline: 2px solid rgba(40, 167, 69, 0.5); outline-offset: 2px; }
 
         /* Back Button Style */
-        .form-actions {
-            margin-top: 25px;
-            text-align: center; /* Center the back button */
-        }
+        .form-actions { margin-top: 25px; text-align: center; }
         a.back-btn {
-          display: inline-block;
-          text-decoration: none;
-          background-color: #6c757d; /* Secondary grey */
-          color: white;
-          padding: 10px 18px;
-          border-radius: 5px;
-          font-weight: 500;
-          transition: background-color 0.2s ease, box-shadow 0.2s ease;
-          font-size: 0.95rem;
+          display: inline-block; text-decoration: none; background-color: #007bff;
+          color: white; padding: 10px 18px; border-radius: 5px; font-weight: 500;
+          transition: background-color 0.2s ease, box-shadow 0.2s ease; font-size: 0.95rem;
         }
-        a.back-btn:hover {
-          background-color: #5a6268;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        a.back-btn:focus {
-             outline: 2px solid rgba(108, 117, 125, 0.5);
-             outline-offset: 2px;
-        }
+        a.back-btn:hover { background-color: #0056b3; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
+        a.back-btn:focus { outline: 2px solid rgba(108, 117, 125, 0.5); outline-offset: 2px; }
 
     </style>
 </head>
@@ -151,7 +93,7 @@
   <div class="container">
     <h2>Create New Tender Filter</h2>
 
-    {# Assuming form submission goes to /run-filter via POST #}
+    {# Form submits to the run_filter_submit endpoint #}
     <form action="{{ url_for('run_filter_submit') }}" method="post">
 
       <div class="form-group">
@@ -159,25 +101,12 @@
         <input type="text" id="filter_name" name="filter_name" placeholder="e.g., IT Infrastructure Q2" required>
       </div>
 
-      <div class="form-group">
-        <label for="file">Select source tender file:</label>
-        <select id="file" name="file" required>
-          {# Check if tender_files list exists and is not empty #}
-          {% if tender_files %}
-            {% for tender_file in tender_files %}
-              <option value="{{ tender_file }}">{{ tender_file }}</option>
-            {% endfor %}
-          {% else %}
-            <option value="" disabled>No tender files found in scraped_data/</option>
-          {% endif %}
-        </select>
-      </div>
+      {# Source file selection removed #}
 
       <div class="form-group">
         <label for="state">Filter by state (optional):</label>
         <select id="state" name="state">
           <option value="">-- Any State --</option>
-          {# Check if states list exists and is not the error placeholder #}
           {% if states and states[0] != "Error: State List Unavailable" %}
             {% for state in states %}
               <option value="{{ state }}">{{ state }}</option>
@@ -188,27 +117,33 @@
         </select>
       </div>
 
-      {# Group date inputs #}
+      {# Date Inputs #}
       <div style="display: flex; gap: 20px;">
           <div class="form-group" style="flex: 1;">
-            <label for="start_date">Start date (optional):</label>
-            <input type="date" id="start_date" name="start_date" title="Only include tenders published on or after this date.">
+            <label for="start_date">E-Publish Date From (optional):</label>
+            <input type="date" id="start_date" name="start_date" title="Only include tenders published ON or AFTER this date.">
           </div>
           <div class="form-group" style="flex: 1;">
-            <label for="end_date">End date (optional):</label>
-            <input type="date" id="end_date" name="end_date" title="Only include tenders closing on or before this date.">
+            <label for="end_date">E-Publish Date To (optional):</label>
+            <input type="date" id="end_date" name="end_date" title="Only include tenders published ON or BEFORE this date.">
           </div>
       </div>
 
-
-      <div class="form-group">
-        <label for="keywords">Keywords (optional, comma-separated):</label>
-        <input type="text" id="keywords" name="keywords" placeholder="e.g., roads, lighting, water supply, software">
+      {# Combined Keyword and Regex Row #}
+      <div class="keyword-regex-group">
+          <div class="keyword-input-wrapper form-group">
+            <label for="keywords">Keywords (optional, comma-separated):</label>
+            <input type="text" id="keywords" name="keywords" placeholder="e.g., roads, lighting, software">
+          </div>
+          <div class="regex-checkbox-wrapper">
+            <input type="checkbox" id="regex" name="regex" value="True">
+            <label for="regex">Use Regex</label>
+          </div>
       </div>
-
-      <div class="form-group checkbox-wrapper">
-        <input type="checkbox" id="regex" name="regex" value="True"> {# Ensure value="True" is sent when checked #}
-        <label for="regex">Treat keywords as Regular Expressions</label>
+      {# Help text for Regex with updated link #}
+      <div class="regex-help">
+          (When 'Use Regex' is checked, keywords are treated as patterns.
+          <a href="{{ url_for('regex_help_page') }}" target="_blank" rel="noopener noreferrer" title="Opens Regex Help in new tab">Need help with Regex?</a>)
       </div>
 
       <button type="submit">Run Filter</button>

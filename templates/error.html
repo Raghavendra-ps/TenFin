@@ -1,11 +1,11 @@
-<!-- START OF FILE TenFin-main/templates/view.html -->
+<!-- START OF FILE TenFin-main/templates/error.html -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Tenders - {{ subdir }}</title>
+    <title>Error Occurred</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         /* Basic Reset */
@@ -16,182 +16,74 @@
           background-color: #f1f4f9; /* Light background */
           color: #333;
           line-height: 1.6;
+          padding-top: 40px; /* Ensure content isn't stuck at the very top */
         }
         .container {
-          max-width: 1100px; /* Wider container for table */
+          max-width: 700px; /* Message container size */
           margin: 40px auto;
-          padding: 25px 30px;
+          padding: 30px 40px;
           background-color: #ffffff;
           border-radius: 8px;
           box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+          text-align: center;
+          border-left: 5px solid #dc3545; /* Red accent border */
         }
-
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .header h2 {
-          margin: 0;
+        h2 {
+          margin-bottom: 20px;
+          color: #dc3545; /* Danger red color */
           font-size: 1.6rem;
           font-weight: 500;
-          color: #1a2a45; /* Dark blue heading */
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
+          display: flex; /* Align icon and text */
+          align-items: center;
+          justify-content: center;
+          gap: 10px; /* Space between icon and text */
         }
-
-        .nav {
-          display: flex;
-          gap: 10px; /* Space between nav buttons */
-          flex-shrink: 0; /* Prevent shrinking */
+        h2::before { /* Simple X icon */
+            content: '❌'; /* Unicode cross mark */
+            font-size: 1.5rem; /* Adjust size as needed */
         }
-
-        .nav a { /* Consistent button style */
+        p {
+          font-size: 1rem; /* Standard paragraph size */
+          margin-bottom: 25px; /* Space before button */
+          color: #555; /* Slightly lighter text for message */
+          word-wrap: break-word; /* Wrap long error messages */
+        }
+        .btn { /* Button style consistent with other pages */
           display: inline-block;
-          padding: 8px 16px;
+          padding: 10px 20px;
           border-radius: 5px;
           font-weight: 500;
           text-decoration: none;
           transition: background-color 0.2s ease, box-shadow 0.2s ease;
           border: none;
           cursor: pointer;
-          font-size: 0.95rem;
+          font-size: 1rem;
+          background-color: #007bff; /* Primary blue for back button */
           color: white;
-          white-space: nowrap;
+          font-family: inherit; /* Ensure consistent font */
         }
-        .nav a:focus {
-            outline: 2px solid #a8c7fa;
+        .btn:hover {
+          background-color: #0056b3;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .btn:focus {
+            outline: 2px solid #a8c7fa; /* Blue focus */
             outline-offset: 2px;
         }
-        .nav a.download-btn {
-             background-color: #28a745; /* Success Green */
-        }
-        .nav a.download-btn:hover {
-            background-color: #218838;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-         .nav a.back-btn {
-             background-color: #6c757d; /* Secondary Grey */
-        }
-        .nav a.back-btn:hover {
-            background-color: #5a6268;
-             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-
-        .table-container {
-            overflow-x: auto; /* Allow horizontal scrolling on small screens */
-        }
-
-        table {
-          width: 100%;
-          border-collapse: collapse;
-          margin-top: 10px;
-        }
-
-        th, td {
-          padding: 12px 15px; /* More padding */
-          text-align: left;
-          vertical-align: top;
-          border-bottom: 1px solid #e0e0e0; /* Bottom border for rows */
-          font-size: 0.95rem;
-          word-wrap: break-word; /* Allow long words to break */
-        }
-
-        th {
-          background-color: #f8f9fa; /* Very light grey header */
-          font-weight: 500; /* Medium weight header */
-          color: #495057;
-          white-space: nowrap; /* Prevent header text wrapping */
-        }
-
-        /* Remove top border from header and bottom from last row */
-        thead th { border-bottom-width: 2px; border-top: 0;}
-        tbody tr:last-child td { border-bottom: 0; }
-
-        /* Optional: Subtle hover effect for rows */
-        tbody tr:hover {
-            background-color: #f1f4f9;
-        }
-
-        /* Adjust column widths if needed */
-        td:nth-child(1), th:nth-child(1) { /* S.No */
-            width: 5%;
-            text-align: right;
-            padding-right: 20px;
-        }
-         td:nth-child(2), th:nth-child(2), /* Dates */
-         td:nth-child(3), th:nth-child(3),
-         td:nth-child(4), th:nth-child(4) {
-            width: 11%;
-            white-space: nowrap;
-        }
-         td:nth-child(5), th:nth-child(5) { /* ID */
-            width: 15%;
-        }
-        td:nth-child(6), th:nth-child(6) { /* Title */
-             width: 30%; /* Allow more space */
-        }
-         /* Department column takes remaining space */
-
-         .no-tenders {
-             text-align: center;
-             padding: 20px;
-             font-style: italic;
-             color: #6c757d;
-         }
-
     </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <h2 title="{{ subdir }}">{{ subdir }}</h2>
-      <div class="nav">
-        <a href="{{ url_for('download_tender_excel', subdir=subdir) }}" class="download-btn">Download Excel</a>
-        <a href="{{ url_for('homepage') }}" class="back-btn">Back to Dashboard</a>
-      </div>
-    </div>
+    <h2>An Error Occurred</h2>
+    {# Display the error message passed from dashboard.py #}
+    {# Using 'safe' filter allows rendering HTML if error message contains it. Be cautious if error messages could come from user input. #}
+    <p>{{ error | safe }}</p>
 
-    <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>S.No</th>
-              <th>E-Publish Date</th>
-              <th>Closing Date</th>
-              <th>Opening Date</th>
-              <th>Tender ID</th>
-              <th>Title</th>
-              <th>Department</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for tender in tenders %}
-            <tr>
-              <td>{{ loop.index }}</td>
-              <td>{{ tender.start_date | default('N/A') }}</td>
-              <td>{{ tender.end_date | default('N/A') }}</td>
-              <td>{{ tender.opening_date | default('N/A') }}</td>
-              <td>{{ tender.tender_id | default('N/A') }}</td>
-              <td>{{ tender.title | default('N/A') }}</td>
-              <td>{{ tender.department | default('N/A') }}</td>
-            </tr>
-            {% else %}
-            <tr>
-                <td colspan="7" class="no-tenders">No tenders found in this filtered set.</td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-    </div> {# End table-container #}
+    {# REMOVED the invalid download link that caused the error #}
 
-  </div> {# End container #}
+    {# Provide a clear way back to the main page #}
+    <a href="{{ url_for('homepage') }}" class="btn">← Back to Dashboard</a>
+  </div>
 </body>
 </html>
-<!-- END OF FILE TenFin-main/templates/view.html -->
+<!-- END OF FILE TenFin-main/templates/error.html -->
