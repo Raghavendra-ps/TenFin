@@ -54,10 +54,13 @@ logging.basicConfig(
     handlers=[ logging.FileHandler(LOG_FILE, encoding='utf-8'), logging.StreamHandler() ]
 )
 
-# Regex to find the two-bracket structure. Captures content of both.
-TWO_BRACKET_STRUCTURE_REGEX = re.compile(r"\[\s*([^\]]+)\s*\]\s*\[\s*([^\]]+)\s*\]")
+# --- Regex Definitions ---
+# 1. Finds content inside square brackets (non-greedy)
+BRACKET_CONTENT_REGEX = re.compile(r"\[(.*?)\]")
+# 2. STRICTLY matches the required ID format: 2025_WORD_NUM_NUM
+#    Uses ^ and $ for exact match of the *content* inside brackets.
+STRICT_ID_CONTENT_REGEX = re.compile(r"^2025_\w+_\d+_\d+$")
 
-# Function to safely get text from a BS4 Tag or return default
 def get_safe_text(element: Optional[Tag], default="N/A") -> str:
     return element.get_text(strip=True) if element else default
 
@@ -66,9 +69,9 @@ def natural_sort_key(filename: str) -> int:
     return int(match.group(1)) if match else 0
 
 
-# === REVISED fetch_single_page with NEW ID Logic ===
+# === REVISED fetch_single_page with STRICT Single Bracket ID Logic ===
 async def fetch_single_page(page, page_number) -> Tuple[int, Optional[str]]:
-    """Fetches page, parses HTML table, extracts tagged data using new ID logic."""
+    """Fetches page, parses HTML table, extracts tagged data using strict ID logic."""
     url = BASE_URL.format(page_number)
     main_page_url = "https://eprocure.gov.in/eprocure/app"
 
@@ -90,7 +93,6 @@ async def fetch_single_page(page, page_number) -> Tuple[int, Optional[str]]:
             if not tender_table:
                 body_text_lower = soup.body.get_text(separator=' ', strip=True).lower() if soup.body else ""
                 if "no records found" in body_text_lower or "no tenders available" in body_text_lower:
-                    logging.info(f"  No records found message detected on page {page_number}.")
                     return page_number, "--- NO RECORDS ---"
                 logging.warning(f"  ⚠️ Could not find table with id='table' on page {page_number}. Skipping page.")
                 return page_number, None
@@ -100,7 +102,6 @@ async def fetch_single_page(page, page_number) -> Tuple[int, Optional[str]]:
 
             if not tender_rows:
                  if "No Records Found" in soup.get_text() or "No Tenders Available" in soup.get_text():
-                     logging.info(f"  No records found message detected on page {page_number} (empty table).")
                      return page_number, "--- NO RECORDS ---"
                  else:
                      logging.warning(f"  ⚠️ Found table but no tender rows (tr with id~='informal') on page {page_number}.")
@@ -118,46 +119,52 @@ async def fetch_single_page(page, page_number) -> Tuple[int, Optional[str]]:
                 title_id_cell = cols[4]
 
                 title = "N/A"
-                tender_id_str = "N/A" # Default
+                tender_id_content = "N/A" # Store the valid ID content, default N/A
+                found_id_content = ""     # Temp store for matched ID content
+                found_id_bracket = ""     # Temp store for the full bracket if ID found
 
-                # Extract all text from the 5th cell first
                 cell_text = title_id_cell.get_text(separator='\n', strip=True)
 
-                # --- New ID Logic ---
-                two_bracket_match = TWO_BRACKET_STRUCTURE_REGEX.search(cell_text)
-                potential_id_part = ""
-                potential_title_part = ""
+                # --- New Strict ID Logic ---
+                # Find *all* bracketed contents in the cell
+                all_brackets = BRACKET_CONTENT_REGEX.findall(cell_text)
+                for content_inside_bracket in all_brackets:
+                    content_inside_bracket = content_inside_bracket.strip()
+                    # Check if this specific content matches the strict ID format
+                    if STRICT_ID_CONTENT_REGEX.match(content_inside_bracket):
+                        found_id_content = content_inside_bracket
+                        found_id_bracket = f"[{content_inside_bracket}]" # Store the bracket too
+                        tender_id_content = found_id_content # Assign the valid content
+                        # print(f"DEBUG: Found Strict ID: {tender_id_content}") # Optional Debug
+                        break # Found the ID, stop checking brackets for ID
 
-                if two_bracket_match:
-                    potential_title_part = two_bracket_match.group(1).strip() # Content of first bracket
-                    potential_id_part = two_bracket_match.group(2).strip() # Content of second bracket
+                # --- Determine Title ---
+                # Prioritize link text
+                link_tag = title_id_cell.find("a")
+                if link_tag:
+                    title = link_tag.get_text(strip=True)
+                    # If link text IS the ID we found, reset title to N/A (to find it elsewhere)
+                    if found_id_content and title == found_id_bracket:
+                         title = "N/A"
 
-                    # Check if second bracket content has at least two slashes
-                    if potential_id_part.count('/') >= 2:
-                        tender_id_str = f"[{potential_id_part}]" # Store second bracket content as ID
-                        title = potential_title_part # Use first bracket content as Title
-                    else:
-                        # If second bracket doesn't meet criteria, assume first bracket is title
-                        # and second bracket is just reference info (not the primary ID)
-                        title = potential_title_part
-                        # tender_id_str remains "N/A" or could store the second part as ref?
-                        # For now, keep it N/A if criteria not met.
-                else:
-                    # If the two-bracket structure isn't found, try finding title in a link
-                    link_tag = title_id_cell.find("a")
-                    if link_tag:
-                        title = link_tag.get_text(strip=True)
-                    else:
-                        # Fallback: Take first line of the cell as title?
-                        title = cell_text.split('\n')[0] if cell_text else "N/A"
+                # If title still N/A, look for the *first* bracketed content that is *not* the found ID
+                if title == "N/A":
+                    for content_inside_bracket in all_brackets:
+                         content_inside_bracket = content_inside_bracket.strip()
+                         current_bracket = f"[{content_inside_bracket}]"
+                         # Ensure it's not the ID bracket and has some content
+                         if content_inside_bracket and current_bracket != found_id_bracket:
+                             title = content_inside_bracket
+                             # print(f"DEBUG: Found Title in brackets: {title}") # Optional Debug
+                             break # Found first suitable bracket for title
 
-                # Ensure title isn't accidentally set to N/A if a part was extracted
-                if title and title != "N/A" and not potential_title_part:
-                     potential_title_part = title # Use title found via link/fallback
-
-                # Final check if title is still N/A but we extracted something in first bracket
-                if title == "N/A" and potential_title_part:
-                    title = potential_title_part
+                # Final fallback if title is still N/A
+                if title == "N/A":
+                    first_line = cell_text.split('\n')[0]
+                    # Assign if it's not the ID bracket and not empty
+                    if first_line and first_line != found_id_bracket:
+                        title = first_line
+                        # print(f"DEBUG: Found Title as first line: {title}") # Optional Debug
 
                 # Construct tagged block
                 tagged_block = (
@@ -166,7 +173,7 @@ async def fetch_single_page(page, page_number) -> Tuple[int, Optional[str]]:
                     f"<Date>{closing_date}</Date>\n"
                     f"<Date>{opening_date}</Date>\n"
                     f"<Title>{title}</Title>\n"
-                    f"<ID>{tender_id_str}</ID>\n" # This will be N/A if criteria not met
+                    f"<ID>{tender_id_content}</ID>\n" # Use the validated content or N/A
                     f"<Department>{org_chain}</Department>\n"
                 )
                 tagged_page_content += "--- TENDER START ---\n" + tagged_block + "--- TENDER END ---\n\n"
@@ -194,8 +201,10 @@ async def fetch_single_page(page, page_number) -> Tuple[int, Optional[str]]:
     return page_number, None
 
 
+# --- fetch_pages_concurrently, merge_and_cleanup, scrape_all_pages ---
+# (No changes needed in these functions from the previous 'tagged' version)
 async def fetch_pages_concurrently(playwright):
-    # (No changes needed in this function)
+    # ... (identical to previous version) ...
     browser = await playwright.chromium.launch(headless=True)
     all_page_results: Dict[int, str] = {}
     try:
@@ -243,7 +252,7 @@ async def fetch_pages_concurrently(playwright):
 
 
 async def merge_and_cleanup() -> Tuple[int, Optional[Path]]:
-    # (No changes needed in this function)
+    # ... (identical to previous version) ...
     today_filename_str = datetime.datetime.now().strftime("%Y-%m-%d")
     final_output_path = BASE_DATA_DIR / f"Final_Tender_List_{today_filename_str}.txt"
     page_files_count = 0
@@ -298,7 +307,7 @@ async def merge_and_cleanup() -> Tuple[int, Optional[Path]]:
 
 
 async def scrape_all_pages():
-    # (No changes needed in this function)
+     # ... (identical to previous version) ...
     start_time = datetime.datetime.now()
     merged_count = 0
     final_output_file = None
@@ -320,6 +329,7 @@ async def scrape_all_pages():
         logging.info(f"   Merged {merged_count} unique pages.")
         if final_output_file: logging.info(f"   Final output: {final_output_file}")
         else: logging.warning("   Final output file was not created.")
+
 
 if __name__ == "__main__":
     asyncio.run(scrape_all_pages())

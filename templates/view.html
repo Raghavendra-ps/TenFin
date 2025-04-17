@@ -1,116 +1,157 @@
+<!-- START OF FILE TenFin-main/templates/view.html -->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>View Tender File</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f1f4f9;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Tenders - {{ subdir }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+          font-family: 'Roboto', sans-serif;
+          background-color: #f1f4f9; /* Light background */
+          color: #333;
+          line-height: 1.5; /* Adjusted line height */
+        }
+        .container {
+          max-width: 1100px; /* Keep container wide for table */
+          margin: 30px auto; /* Reduced top/bottom margin */
+          padding: 20px 25px; /* Adjusted padding */
+          background-color: #ffffff;
+          border-radius: 8px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
 
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
 
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+        .header h2 {
+          margin: 0; font-size: 1.5rem; font-weight: 500; color: #1a2a45;
+          overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+        }
 
-    .nav {
-      display: flex;
-      justify-content: flex-end;
-      gap: 10px;
-      margin-bottom: 25px;
-    }
+        .nav { display: flex; gap: 10px; flex-shrink: 0; }
+        .nav a {
+          display: inline-block; padding: 8px 14px; border-radius: 5px;
+          font-weight: 500; text-decoration: none;
+          transition: background-color 0.2s ease;
+          border: none; cursor: pointer; font-size: 0.9rem; color: white;
+          white-space: nowrap;
+        }
+        .nav a:focus { outline: 2px solid #a8c7fa; outline-offset: 2px; }
+        .nav a.download-btn { background-color: #28a745; }
+        .nav a.download-btn:hover { background-color: #218838; }
+        .nav a.back-btn { background-color: #6c757d; }
+        .nav a.back-btn:hover { background-color: #5a6268; }
 
-    .nav a {
-      background-color: #007bff;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: background-color 0.2s ease;
-    }
+        .table-container {
+            overflow-x: auto; /* Essential for responsiveness */
+            width: 100%;
+        }
 
-    .nav a:hover {
-      background-color: #0056b3;
-    }
+        table {
+          width: 100%;
+          border-collapse: collapse;
+          margin-top: 10px;
+          /* table-layout: fixed; REMOVED - Use auto layout */
+        }
 
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-      table-layout: fixed;
-      word-wrap: break-word;
-    }
+        th, td {
+          padding: 10px 12px; /* Padding */
+          text-align: left;
+          vertical-align: top; /* Align content top */
+          border-bottom: 1px solid #e7eaf0; /* Lighter border */
+          font-size: 0.9rem;
+          /* Removed word-wrap, use overflow-wrap */
+          overflow-wrap: break-word; /* Allow long words to break */
+          hyphens: auto; /* Add hyphens if word breaks */
+        }
 
-    th, td {
-      border: 1px solid #ccc;
-      padding: 10px;
-      text-align: left;
-      vertical-align: top;
-    }
+        th {
+          background-color: #f8f9fa;
+          font-weight: 500;
+          color: #495057;
+          white-space: nowrap; /* Keep headers on one line */
+          position: sticky; /* Make header sticky */
+          top: 0; /* Stick to the top */
+          z-index: 1; /* Ensure header is above body */
+        }
 
-    th {
-      background-color: #f0f0f0;
-      font-weight: bold;
-    }
+        thead th { border-bottom-width: 2px; border-color: #dee2e6; } /* Stronger header underline */
+        tbody tr:last-child td { border-bottom: 0; }
+        tbody tr:hover { background-color: #f1f4f9; } /* Row hover effect */
 
-    tr:nth-child(even) {
-      background-color: #fafafa;
-    }
+        /* --- Column Width Hints (using percentages for flexibility) --- */
+        /* These are suggestions, browser auto-layout might adjust */
+        th:nth-child(1), td:nth-child(1) { width: 5%; text-align: right; padding-right: 15px;} /* S.No */
+        th:nth-child(2), td:nth-child(2) { width: 12%; } /* ePublished Date */
+        th:nth-child(3), td:nth-child(3) { width: 12%; } /* Closing Date */
+        th:nth-child(4), td:nth-child(4) { width: 12%; } /* Opening Date */
+        th:nth-child(5), td:nth-child(5) { width: 18%; } /* ID */
+        th:nth-child(6), td:nth-child(6) { width: 21%; } /* Title */
+        th:nth-child(7), td:nth-child(7) { width: 20%; } /* Department (adjust if needed) */
+        /* Total = 100% */
+         /* --- End Column Width Hints --- */
 
-    td:nth-child(1) {
-      width: 50px; /* slim S.No column */
-    }
-  </style>
+         .no-tenders { text-align: center; padding: 20px; font-style: italic; color: #6c757d; }
+    </style>
 </head>
 <body>
   <div class="container">
-    <div class="nav">
-      <a href="/download/{{ subdir }}">Download Excel</a>
-      <a href="/">Back to Dashboard</a>
+    <div class="header">
+      <h2 title="{{ subdir }}">{{ subdir }}</h2>
+      <div class="nav">
+        <a href="{{ url_for('download_tender_excel', subdir=subdir) }}" class="download-btn">Download Excel</a>
+        <a href="{{ url_for('homepage') }}" class="back-btn">Back to Dashboard</a>
+      </div>
     </div>
 
-    <h2>{{ subdir }}</h2>
+    <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>E-Publish Date</th>
+              <th>Closing Date</th>
+              <th>Opening Date</th>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Department</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for tender in tenders %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              {# Use default filter to handle potential None or empty values gracefully #}
+              {# Display the values exactly as they are in the dictionary #}
+              <td>{{ tender.start_date | default('N/A') }}</td>
+              <td>{{ tender.end_date | default('N/A') }}</td>
+              <td>{{ tender.opening_date | default('N/A') }}</td>
+              <td>{{ tender.tender_id | default('N/A') }}</td>
+              <td>{{ tender.title | default('N/A') }}</td>
+              <td>{{ tender.department | default('N/A') }}</td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="7" class="no-tenders">No tenders found in this filtered set.</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </div> {# End table-container #}
 
-    <table>
-      <thead>
-        <tr>
-          <th>S.No</th>
-          <th>E-Publish Date</th>
-          <th>Closing Date</th>
-          <th>Opening Date</th>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Department</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for tender in tenders %}
-        <tr>
-          <td>{{ loop.index }}</td>
-          <td>{{ tender.start_date }}</td>
-          <td>{{ tender.end_date }}</td>
-          <td>{{ tender.opening_date }}</td>
-          <td>{{ tender.tender_id }}</td>
-          <td>{{ tender.title }}</td>
-          <td>{{ tender.department }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+  </div> {# End container #}
 </body>
 </html>
-
+<!-- END OF FILE TenFin-main/templates/view.html -->

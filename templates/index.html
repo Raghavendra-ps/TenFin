@@ -3,186 +3,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Filtered Tenders Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    /* Basic Reset */
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtered Tenders Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { font-size: 16px; }
+        body {
+          font-family: 'Roboto', sans-serif; background-color: #f1f4f9;
+          color: #333; line-height: 1.6;
+        }
+        .container {
+          max-width: 900px; margin: 40px auto; padding: 25px 30px;
+          background-color: #ffffff; border-radius: 8px;
+          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        .header {
+          display: flex; justify-content: space-between; align-items: center;
+          margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0;
+        }
+        .header h1 { margin: 0; font-size: 1.8rem; font-weight: 500; color: #1a2a45; }
 
-    html {
-        font-size: 16px; /* Base font size */
-    }
+        /* Button Styles (General) */
+        .btn, .actions a, #bulk-action-bar button {
+          display: inline-block; padding: 8px 16px; border-radius: 5px;
+          font-weight: 500; text-decoration: none;
+          transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+          border: none; cursor: pointer; font-size: 0.95rem; text-align: center;
+          white-space: nowrap; vertical-align: middle; color: white;
+          font-family: inherit;
+        }
+        .btn:focus, .actions a:focus, #bulk-action-bar button:focus {
+            outline: 2px solid #a8c7fa; outline-offset: 2px;
+        }
+        .btn { background-color: #007bff; } /* New Filter */
+        .btn:hover { background-color: #0056b3; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); }
 
-    body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f1f4f9; /* Light background */
-      color: #333; /* Default text color */
-      line-height: 1.6;
-    }
+        /* List Styles */
+        ul { list-style: none; padding: 0; margin-top: 0; /* Removed top margin */ }
+        li {
+          background-color: #ffffff; border: 1px solid #e7eaf0; border-radius: 6px;
+          padding: 12px 15px; margin-bottom: 12px; display: flex;
+          justify-content: space-between; align-items: center;
+          transition: box-shadow 0.2s ease, background-color 0.2s ease;
+        }
+        li:hover { box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07); }
+        li.selected { background-color: #e7f3ff; /* Highlight selected rows */ } /* NEW */
 
-    .container {
-      max-width: 900px; /* Standard container width */
-      margin: 40px auto; /* Center container with margin */
-      padding: 25px 30px; /* Padding inside container */
-      background-color: #ffffff; /* White background for content */
-      border-radius: 8px; /* Rounded corners */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-    }
+        /* Checkbox Area */
+        .list-item-select { margin-right: 15px; flex-shrink: 0; }
+         .list-item-select input[type="checkbox"] { transform: scale(1.3); cursor: pointer; vertical-align: middle; }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #e0e0e0; /* Separator line */
-    }
+        /* Filename Area */
+        .filename {
+          font-weight: 500; font-size: 1rem; color: #333; overflow: hidden;
+          text-overflow: ellipsis; white-space: nowrap; margin-right: 15px;
+          flex-grow: 1;
+        }
+         .filename a { color: inherit; text-decoration: none; }
+         .filename a:hover { text-decoration: underline; color: #0056b3; }
 
-    .header h1 {
-      margin: 0;
-      font-size: 1.8rem; /* Heading size */
-      font-weight: 500;
-      color: #1a2a45; /* Darker blue heading */
-    }
+        /* Individual Action Buttons (Only View) */
+        .actions { display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
+        .actions a {
+            padding: 6px 12px; font-size: 0.9rem;
+            background-color: #17a2b8; /* Info blue for view */
+        }
+        .actions a:hover { background-color: #117a8b; }
 
-    /* Unified button/link style used across templates */
-    .btn, .actions a, .actions button {
-      display: inline-block;
-      padding: 8px 16px;
-      border-radius: 5px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background-color 0.2s ease, box-shadow 0.2s ease;
-      border: none;
-      cursor: pointer;
-      font-size: 0.95rem;
-      text-align: center;
-      white-space: nowrap;
-      vertical-align: middle;
-      color: white; /* Default text color for buttons */
-    }
+        /* --- Bulk Action Bar Styles --- */
+        #bulk-action-bar {
+            display: none; /* Hidden by default */
+            background-color: #e9ecef; /* Light grey background */
+            padding: 10px 15px;
+            margin-bottom: 15px; /* Space above list */
+            border-radius: 6px;
+            border: 1px solid #ced4da;
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Space between elements */
+            flex-wrap: wrap;
+        }
+        #bulk-action-bar.visible { /* Class added by JS */
+             display: flex;
+        }
+         #bulk-action-bar label { /* Select All Label */
+             cursor: pointer; font-size: 0.9rem; display: flex;
+             align-items: center; gap: 5px; margin-right: auto; /* Pushes actions right */
+             font-weight: 500;
+         }
+          #bulk-action-bar label input { transform: scale(1.2); margin-right: 5px; }
+         #bulk-action-bar span#selected-count-info { /* Selection count text */
+             font-size: 0.9rem;
+             color: #495057;
+             margin-right: 15px;
+         }
+         #bulk-action-bar button { /* Buttons within the bar */
+            padding: 6px 14px; /* Slightly smaller */
+         }
+         #bulk-download-btn { background-color: #28a745; /* Green for download */ }
+         #bulk-download-btn:hover { background-color: #218838; }
+         #bulk-delete-btn { background-color: #dc3545; /* Red for delete */ }
+         #bulk-delete-btn:hover { background-color: #c82333; }
 
-    .btn:focus, .actions a:focus, .actions button:focus {
-        outline: 2px solid #a8c7fa; /* Focus indicator */
-        outline-offset: 2px;
-    }
+         /* --- End Bulk Action Bar Styles --- */
 
-    /* Style for the "+ New Filter" button */
-    .btn {
-      background-color: #007bff; /* Primary blue */
-    }
-    .btn:hover {
-      background-color: #0056b3; /* Darker blue on hover */
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-
-    li {
-      background-color: #ffffff;
-      border: 1px solid #e7eaf0; /* Lighter border */
-      border-radius: 6px;
-      padding: 15px 20px;
-      margin-bottom: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: box-shadow 0.2s ease;
-    }
-    li:hover {
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07); /* Hover effect */
-    }
-
-    .filename {
-      font-weight: 500;
-      font-size: 1rem;
-      color: #333;
-      overflow: hidden; /* Prevent long names from breaking layout */
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      margin-right: 15px; /* Space between filename and actions */
-      flex-grow: 1; /* Allow filename to take available space */
-    }
-
-    .actions {
-        display: inline-flex; /* Align items horizontally */
-        align-items: center; /* Vertically align items */
-        gap: 8px; /* Space between action items */
-        flex-shrink: 0; /* Prevent actions container from shrinking */
-    }
-
-    /* View/Download Links using the unified style */
-    .actions a {
-      background-color: #17a2b8; /* Info blue */
-    }
-    .actions a:hover {
-      background-color: #117a8b;
-    }
-
-    /* Delete Button using the unified style */
-    .actions form button {
-        background-color: #dc3545; /* Danger red */
-        font-family: inherit; /* Ensure consistent font */
-    }
-    .actions form button:hover {
-        background-color: #c82333;
-        border-color: #bd2130;
-    }
-
-    /* Make the form display inline without affecting layout */
-    .actions form {
-        display: inline;
-        margin: 0;
-        padding: 0;
-    }
-
-    /* Style for when the list is empty */
-    .no-items {
-        text-align: center;
-        color: #6c757d; /* Muted text color */
-        padding: 25px 20px; /* More padding */
-        font-style: italic;
-        border: 1px dashed #d3d9e0; /* Dashed border for empty state */
-        background-color: #f8f9fa; /* Slightly different background */
-    }
+        .no-items { text-align: center; color: #6c757d; padding: 25px 20px; font-style: italic; border: 1px dashed #d3d9e0; background-color: #f8f9fa; }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>Tender Finder Dashboard</h1> {# Updated Title #}
+      <h1>Tender Finder Dashboard</h1>
       <a href="{{ url_for('run_filter_form') }}" class="btn">+ New Filter</a>
     </div>
 
-    <ul>
-      {# Loop through subdirectories (filtered tender sets) #}
-      {% for subdir in subdirs %}
-        <li>
-          <span class="filename" title="{{ subdir }}">{{ subdir }}</span> {# Add title for full name on hover #}
-          <span class="actions">
-            <a href="{{ url_for('view_tenders', subdir=subdir) }}" title="View {{ subdir }}">View</a>
-            <a href="{{ url_for('download_tender_excel', subdir=subdir) }}" title="Download {{ subdir }} as Excel">Download</a>
-            <!-- Form to send POST request for delete -->
-            <form action="{{ url_for('delete_tender_set', subdir=subdir) }}" method="post" style="display: inline;">
-              <button type="submit" title="Delete {{ subdir }}" onclick="return confirm('Are you sure you want to permanently delete the tender set \'{{ subdir }}\'? This action cannot be undone.');">Delete</button>
-            </form>
-          </span>
-        </li>
-      {% else %}
-        {# Displayed if the subdirs list is empty #}
-        <li class="no-items">No filtered tender sets found. Run a new filter to create one.</li>
-      {% endfor %}
-    </ul>
+    {# **** FORM FOR BULK ACTIONS **** #}
+    {# Action will be set by JS before submitting #}
+    <form id="bulk-action-form" action="" method="post">
+
+        {# ---- CONTEXTUAL BULK ACTION BAR ---- #}
+        {# Hidden by default, shown by JS when items are selected #}
+        <div id="bulk-action-bar">
+             <label title="Select/Deselect All Items">
+                <input type="checkbox" id="select-all-checkbox-header" onclick="toggleAllCheckboxes(this);"> Select All
+            </label>
+            <span id="selected-count-info">0 items selected</span>
+            <button type="button" id="bulk-download-btn" title="Download selected items as a multi-sheet Excel file">Download Selected</button>
+            <button type="button" id="bulk-delete-btn" title="Delete selected items permanently">Delete Selected</button>
+        </div>
+        {# ---- END ACTION BAR ---- #}
+
+        <ul>
+          {% for subdir in subdirs %}
+            {# Added data-subdir attribute for easier JS access if needed later #}
+            <li data-subdir="{{ subdir }}">
+              {# Checkbox for selection #}
+              <span class="list-item-select">
+                  <input type="checkbox" name="selected_subdirs" value="{{ subdir }}" onclick="updateActionBar();">
+              </span>
+              {# Filename (clickable link to view) #}
+              <span class="filename" title="{{ subdir }}">
+                  <a href="{{ url_for('view_tenders', subdir=subdir) }}">{{ subdir }}</a>
+              </span>
+              {# Individual Actions (Only View remains) #}
+              <span class="actions">
+                <a href="{{ url_for('view_tenders', subdir=subdir) }}" title="View {{ subdir }}">View</a>
+              </span>
+            </li>
+          {% else %}
+            <li class="no-items">No filtered tender sets found. Run a new filter to create one.</li>
+          {% endfor %}
+        </ul>
+
+    </form> {# **** END OF FORM **** #}
+
   </div>
+
+  {# JavaScript for Action Bar and Submissions #}
+  <script>
+    const bulkForm = document.getElementById('bulk-action-form');
+    const selectAllHeaderCheckbox = document.getElementById('select-all-checkbox-header');
+    const actionBar = document.getElementById('bulk-action-bar');
+    const selectedCountInfo = document.getElementById('selected-count-info');
+    const bulkDownloadBtn = document.getElementById('bulk-download-btn');
+    const bulkDeleteBtn = document.getElementById('bulk-delete-btn');
+    const itemCheckboxes = document.querySelectorAll('input[name="selected_subdirs"]');
+
+    function toggleAllCheckboxes(masterCheckbox) {
+      itemCheckboxes.forEach(checkbox => {
+        checkbox.checked = masterCheckbox.checked;
+        // Update visual selection style for list items
+        const listItem = checkbox.closest('li');
+        if (listItem) {
+            listItem.classList.toggle('selected', masterCheckbox.checked);
+        }
+      });
+      updateActionBar();
+    }
+
+    function updateActionBar() {
+        const checkedCheckboxes = document.querySelectorAll('input[name="selected_subdirs"]:checked');
+        const count = checkedCheckboxes.length;
+
+        // Show/hide action bar
+        if (actionBar) {
+            actionBar.classList.toggle('visible', count > 0);
+        }
+
+        // Update count text
+        if (selectedCountInfo) {
+            selectedCountInfo.textContent = `${count} item${count !== 1 ? 's' : ''} selected`;
+        }
+
+        // Update "Select All" checkbox state (checked, unchecked, or indeterminate)
+        if (selectAllHeaderCheckbox) {
+            if (count === 0) {
+                selectAllHeaderCheckbox.checked = false;
+                selectAllHeaderCheckbox.indeterminate = false;
+            } else if (count === itemCheckboxes.length) {
+                selectAllHeaderCheckbox.checked = true;
+                selectAllHeaderCheckbox.indeterminate = false;
+            } else {
+                selectAllHeaderCheckbox.checked = false;
+                selectAllHeaderCheckbox.indeterminate = true;
+            }
+        }
+
+        // Update visual selection style for list items based on individual checkboxes
+        itemCheckboxes.forEach(checkbox => {
+             const listItem = checkbox.closest('li');
+             if (listItem) {
+                listItem.classList.toggle('selected', checkbox.checked);
+            }
+        });
+    }
+
+    // Add listeners for action buttons within the bar
+    if (bulkDownloadBtn) {
+        bulkDownloadBtn.addEventListener('click', function() {
+            if (document.querySelectorAll('input[name="selected_subdirs"]:checked').length > 0) {
+                bulkForm.action = "{{ url_for('bulk_download_tender_excel') }}";
+                bulkForm.method = "post";
+                bulkForm.submit();
+            } else {
+                alert("Please select items to download.");
+            }
+        });
+    }
+
+    if (bulkDeleteBtn) {
+         bulkDeleteBtn.addEventListener('click', function() {
+            const checkedCount = document.querySelectorAll('input[name="selected_subdirs"]:checked').length;
+            if (checkedCount > 0) {
+                const confirmation = confirm(`Are you sure you want to delete the selected ${checkedCount} item(s)? This action cannot be undone.`);
+                if (confirmation) {
+                    bulkForm.action = "{{ url_for('bulk_delete_tender_sets') }}";
+                    bulkForm.method = "post";
+                    bulkForm.submit();
+                }
+            } else {
+                 alert("Please select items to delete.");
+            }
+        });
+    }
+
+     // Add listener to individual checkboxes to update action bar
+     itemCheckboxes.forEach(checkbox => {
+         checkbox.addEventListener('click', updateActionBar);
+     });
+
+     // Initial update on page load in case of back button usage etc.
+     document.addEventListener('DOMContentLoaded', updateActionBar);
+
+  </script>
 </body>
 </html>
 <!-- END OF FILE TenFin-main/templates/index.html -->
