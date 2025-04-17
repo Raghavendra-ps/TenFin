@@ -1,0 +1,729 @@
+
+
+======== 2025-04-16 ========
+16:37:35 [INFO] 🚀 Starting concurrent scrape
+16:37:35 [INFO] 📄 Fetching Page 1 (Attempt 1)
+16:37:35 [INFO] 📄 Fetching Page 2 (Attempt 1)
+16:37:35 [INFO] 📄 Fetching Page 3 (Attempt 1)
+16:37:35 [INFO] 📄 Fetching Page 4 (Attempt 1)
+16:37:35 [INFO] 📄 Fetching Page 5 (Attempt 1)
+16:37:35 [INFO] 📄 Fetching Page 6 (Attempt 1)
+16:37:35 [INFO] 📄 Fetching Page 7 (Attempt 1)
+16:37:35 [INFO] 📄 Fetching Page 8 (Attempt 1)
+16:37:35 [INFO] 📄 Fetching Page 9 (Attempt 1)
+16:37:35 [INFO] 📄 Fetching Page 10 (Attempt 1)
+16:37:38 [INFO] 📄 Fetching Page 11 (Attempt 1)
+16:37:38 [INFO] 📄 Fetching Page 12 (Attempt 1)
+16:37:38 [INFO] 📄 Fetching Page 13 (Attempt 1)
+16:37:38 [INFO] 📄 Fetching Page 14 (Attempt 1)
+16:37:38 [INFO] 📄 Fetching Page 15 (Attempt 1)
+16:37:38 [INFO] 📄 Fetching Page 16 (Attempt 1)
+16:37:38 [INFO] 📄 Fetching Page 17 (Attempt 1)
+16:37:38 [INFO] 📄 Fetching Page 18 (Attempt 1)
+16:37:38 [INFO] 📄 Fetching Page 19 (Attempt 1)
+16:37:38 [INFO] 📄 Fetching Page 20 (Attempt 1)
+16:37:40 [INFO] 📄 Fetching Page 21 (Attempt 1)
+16:37:40 [INFO] 📄 Fetching Page 22 (Attempt 1)
+16:37:40 [INFO] 📄 Fetching Page 23 (Attempt 1)
+16:37:40 [INFO] 📄 Fetching Page 24 (Attempt 1)
+16:37:40 [INFO] 📄 Fetching Page 25 (Attempt 1)
+16:37:40 [INFO] 📄 Fetching Page 26 (Attempt 1)
+16:37:40 [INFO] 📄 Fetching Page 27 (Attempt 1)
+16:37:40 [INFO] 📄 Fetching Page 28 (Attempt 1)
+16:37:40 [INFO] 📄 Fetching Page 29 (Attempt 1)
+16:37:40 [INFO] 📄 Fetching Page 30 (Attempt 1)
+16:37:43 [INFO] 📄 Fetching Page 31 (Attempt 1)
+16:37:43 [INFO] 📄 Fetching Page 32 (Attempt 1)
+16:37:43 [INFO] 📄 Fetching Page 33 (Attempt 1)
+16:37:43 [INFO] 📄 Fetching Page 34 (Attempt 1)
+16:37:43 [INFO] 📄 Fetching Page 35 (Attempt 1)
+16:37:43 [INFO] 📄 Fetching Page 36 (Attempt 1)
+16:37:43 [INFO] 📄 Fetching Page 37 (Attempt 1)
+16:37:43 [INFO] 📄 Fetching Page 38 (Attempt 1)
+16:37:43 [INFO] 📄 Fetching Page 39 (Attempt 1)
+16:37:43 [INFO] 📄 Fetching Page 40 (Attempt 1)
+16:37:45 [INFO] 📄 Fetching Page 41 (Attempt 1)
+16:37:45 [INFO] 📄 Fetching Page 42 (Attempt 1)
+16:37:45 [INFO] 📄 Fetching Page 43 (Attempt 1)
+16:37:45 [INFO] 📄 Fetching Page 44 (Attempt 1)
+16:37:45 [INFO] 📄 Fetching Page 45 (Attempt 1)
+16:37:45 [INFO] 📄 Fetching Page 46 (Attempt 1)
+16:37:45 [INFO] 📄 Fetching Page 47 (Attempt 1)
+16:37:45 [INFO] 📄 Fetching Page 48 (Attempt 1)
+16:37:45 [INFO] 📄 Fetching Page 49 (Attempt 1)
+16:37:45 [INFO] 📄 Fetching Page 50 (Attempt 1)
+16:37:47 [INFO] 📄 Fetching Page 51 (Attempt 1)
+16:37:47 [INFO] 📄 Fetching Page 52 (Attempt 1)
+16:37:47 [INFO] 📄 Fetching Page 53 (Attempt 1)
+16:37:47 [INFO] 📄 Fetching Page 54 (Attempt 1)
+16:37:47 [INFO] 📄 Fetching Page 55 (Attempt 1)
+16:37:47 [INFO] 📄 Fetching Page 56 (Attempt 1)
+16:37:47 [INFO] 📄 Fetching Page 57 (Attempt 1)
+16:37:47 [INFO] 📄 Fetching Page 58 (Attempt 1)
+16:37:47 [INFO] 📄 Fetching Page 59 (Attempt 1)
+16:37:47 [INFO] 📄 Fetching Page 60 (Attempt 1)
+16:37:50 [INFO] 📄 Fetching Page 61 (Attempt 1)
+16:37:50 [INFO] 📄 Fetching Page 62 (Attempt 1)
+16:37:50 [INFO] 📄 Fetching Page 63 (Attempt 1)
+16:37:50 [INFO] 📄 Fetching Page 64 (Attempt 1)
+16:37:50 [INFO] 📄 Fetching Page 65 (Attempt 1)
+16:37:50 [INFO] 📄 Fetching Page 66 (Attempt 1)
+16:37:50 [INFO] 📄 Fetching Page 67 (Attempt 1)
+16:37:50 [INFO] 📄 Fetching Page 68 (Attempt 1)
+16:37:50 [INFO] 📄 Fetching Page 69 (Attempt 1)
+16:37:50 [INFO] 📄 Fetching Page 70 (Attempt 1)
+16:37:52 [INFO] 📄 Fetching Page 71 (Attempt 1)
+16:37:52 [INFO] 📄 Fetching Page 72 (Attempt 1)
+16:37:52 [INFO] 📄 Fetching Page 73 (Attempt 1)
+16:37:52 [INFO] 📄 Fetching Page 74 (Attempt 1)
+16:37:52 [INFO] 📄 Fetching Page 75 (Attempt 1)
+16:37:52 [INFO] 📄 Fetching Page 76 (Attempt 1)
+16:37:52 [INFO] 📄 Fetching Page 77 (Attempt 1)
+16:37:52 [INFO] 📄 Fetching Page 78 (Attempt 1)
+16:37:52 [INFO] 📄 Fetching Page 79 (Attempt 1)
+16:37:52 [INFO] 📄 Fetching Page 80 (Attempt 1)
+16:37:54 [INFO] 📄 Fetching Page 81 (Attempt 1)
+16:37:54 [INFO] 📄 Fetching Page 82 (Attempt 1)
+16:37:54 [INFO] 📄 Fetching Page 83 (Attempt 1)
+16:37:54 [INFO] 📄 Fetching Page 84 (Attempt 1)
+16:37:54 [INFO] 📄 Fetching Page 85 (Attempt 1)
+16:37:54 [INFO] 📄 Fetching Page 86 (Attempt 1)
+16:37:54 [INFO] 📄 Fetching Page 87 (Attempt 1)
+16:37:54 [INFO] 📄 Fetching Page 88 (Attempt 1)
+16:37:54 [INFO] 📄 Fetching Page 89 (Attempt 1)
+16:37:54 [INFO] 📄 Fetching Page 90 (Attempt 1)
+16:37:57 [INFO] 📄 Fetching Page 91 (Attempt 1)
+16:37:57 [INFO] 📄 Fetching Page 92 (Attempt 1)
+16:37:57 [INFO] 📄 Fetching Page 93 (Attempt 1)
+16:37:57 [INFO] 📄 Fetching Page 94 (Attempt 1)
+16:37:57 [INFO] 📄 Fetching Page 95 (Attempt 1)
+16:37:57 [INFO] 📄 Fetching Page 96 (Attempt 1)
+16:37:57 [INFO] 📄 Fetching Page 97 (Attempt 1)
+16:37:57 [INFO] 📄 Fetching Page 98 (Attempt 1)
+16:37:57 [INFO] 📄 Fetching Page 99 (Attempt 1)
+16:37:57 [INFO] 📄 Fetching Page 100 (Attempt 1)
+16:37:59 [INFO] 🛑 Stopping at Page 99: Duplicate or empty.
+16:37:59 [INFO] ✅ Merged 98 pages to: /root/TenFin/scraped_data/Final_Tender_List 16-04-2025.txt
+16:37:59 [INFO] 🏁 Scrape run completed.
+16:37:59 [INFO]    Duration: 0:00:24
+16:37:59 [INFO]    Merged 98 unique pages.
+16:37:59 [INFO]    Final output: /root/TenFin/scraped_data/Final_Tender_List 16-04-2025.txt
+
+
+======== 2025-04-17 ========
+00:00:01 [INFO] 🚀 Starting concurrent scrape
+00:00:01 [INFO] 📄 Fetching Page 1 (Attempt 1)
+00:00:01 [INFO] 📄 Fetching Page 2 (Attempt 1)
+00:00:01 [INFO] 📄 Fetching Page 3 (Attempt 1)
+00:00:01 [INFO] 📄 Fetching Page 4 (Attempt 1)
+00:00:01 [INFO] 📄 Fetching Page 5 (Attempt 1)
+00:00:01 [INFO] 📄 Fetching Page 6 (Attempt 1)
+00:00:01 [INFO] 📄 Fetching Page 7 (Attempt 1)
+00:00:01 [INFO] 📄 Fetching Page 8 (Attempt 1)
+00:00:01 [INFO] 📄 Fetching Page 9 (Attempt 1)
+00:00:01 [INFO] 📄 Fetching Page 10 (Attempt 1)
+00:00:04 [INFO] 📄 Fetching Page 11 (Attempt 1)
+00:00:04 [INFO] 📄 Fetching Page 12 (Attempt 1)
+00:00:04 [INFO] 📄 Fetching Page 13 (Attempt 1)
+00:00:04 [INFO] 📄 Fetching Page 14 (Attempt 1)
+00:00:04 [INFO] 📄 Fetching Page 15 (Attempt 1)
+00:00:04 [INFO] 📄 Fetching Page 16 (Attempt 1)
+00:00:04 [INFO] 📄 Fetching Page 17 (Attempt 1)
+00:00:04 [INFO] 📄 Fetching Page 18 (Attempt 1)
+00:00:04 [INFO] 📄 Fetching Page 19 (Attempt 1)
+00:00:04 [INFO] 📄 Fetching Page 20 (Attempt 1)
+00:00:06 [INFO] 📄 Fetching Page 21 (Attempt 1)
+00:00:06 [INFO] 📄 Fetching Page 22 (Attempt 1)
+00:00:06 [INFO] 📄 Fetching Page 23 (Attempt 1)
+00:00:06 [INFO] 📄 Fetching Page 24 (Attempt 1)
+00:00:06 [INFO] 📄 Fetching Page 25 (Attempt 1)
+00:00:06 [INFO] 📄 Fetching Page 26 (Attempt 1)
+00:00:06 [INFO] 📄 Fetching Page 27 (Attempt 1)
+00:00:06 [INFO] 📄 Fetching Page 28 (Attempt 1)
+00:00:06 [INFO] 📄 Fetching Page 29 (Attempt 1)
+00:00:06 [INFO] 📄 Fetching Page 30 (Attempt 1)
+00:00:09 [INFO] 📄 Fetching Page 31 (Attempt 1)
+00:00:09 [INFO] 📄 Fetching Page 32 (Attempt 1)
+00:00:09 [INFO] 📄 Fetching Page 33 (Attempt 1)
+00:00:09 [INFO] 📄 Fetching Page 34 (Attempt 1)
+00:00:09 [INFO] 📄 Fetching Page 35 (Attempt 1)
+00:00:09 [INFO] 📄 Fetching Page 36 (Attempt 1)
+00:00:09 [INFO] 📄 Fetching Page 37 (Attempt 1)
+00:00:09 [INFO] 📄 Fetching Page 38 (Attempt 1)
+00:00:09 [INFO] 📄 Fetching Page 39 (Attempt 1)
+00:00:09 [INFO] 📄 Fetching Page 40 (Attempt 1)
+00:00:11 [INFO] 📄 Fetching Page 41 (Attempt 1)
+00:00:11 [INFO] 📄 Fetching Page 42 (Attempt 1)
+00:00:11 [INFO] 📄 Fetching Page 43 (Attempt 1)
+00:00:11 [INFO] 📄 Fetching Page 44 (Attempt 1)
+00:00:11 [INFO] 📄 Fetching Page 45 (Attempt 1)
+00:00:11 [INFO] 📄 Fetching Page 46 (Attempt 1)
+00:00:11 [INFO] 📄 Fetching Page 47 (Attempt 1)
+00:00:11 [INFO] 📄 Fetching Page 48 (Attempt 1)
+00:00:11 [INFO] 📄 Fetching Page 49 (Attempt 1)
+00:00:11 [INFO] 📄 Fetching Page 50 (Attempt 1)
+00:00:14 [INFO] 📄 Fetching Page 51 (Attempt 1)
+00:00:14 [INFO] 📄 Fetching Page 52 (Attempt 1)
+00:00:14 [INFO] 📄 Fetching Page 53 (Attempt 1)
+00:00:14 [INFO] 📄 Fetching Page 54 (Attempt 1)
+00:00:14 [INFO] 📄 Fetching Page 55 (Attempt 1)
+00:00:14 [INFO] 📄 Fetching Page 56 (Attempt 1)
+00:00:14 [INFO] 📄 Fetching Page 57 (Attempt 1)
+00:00:14 [INFO] 📄 Fetching Page 58 (Attempt 1)
+00:00:14 [INFO] 📄 Fetching Page 59 (Attempt 1)
+00:00:14 [INFO] 📄 Fetching Page 60 (Attempt 1)
+00:00:16 [INFO] 📄 Fetching Page 61 (Attempt 1)
+00:00:16 [INFO] 📄 Fetching Page 62 (Attempt 1)
+00:00:16 [INFO] 📄 Fetching Page 63 (Attempt 1)
+00:00:16 [INFO] 📄 Fetching Page 64 (Attempt 1)
+00:00:16 [INFO] 📄 Fetching Page 65 (Attempt 1)
+00:00:16 [INFO] 📄 Fetching Page 66 (Attempt 1)
+00:00:16 [INFO] 📄 Fetching Page 67 (Attempt 1)
+00:00:16 [INFO] 📄 Fetching Page 68 (Attempt 1)
+00:00:16 [INFO] 📄 Fetching Page 69 (Attempt 1)
+00:00:16 [INFO] 📄 Fetching Page 70 (Attempt 1)
+00:00:18 [INFO] 📄 Fetching Page 71 (Attempt 1)
+00:00:18 [INFO] 📄 Fetching Page 72 (Attempt 1)
+00:00:18 [INFO] 📄 Fetching Page 73 (Attempt 1)
+00:00:18 [INFO] 📄 Fetching Page 74 (Attempt 1)
+00:00:18 [INFO] 📄 Fetching Page 75 (Attempt 1)
+00:00:18 [INFO] 📄 Fetching Page 76 (Attempt 1)
+00:00:18 [INFO] 📄 Fetching Page 77 (Attempt 1)
+00:00:18 [INFO] 📄 Fetching Page 78 (Attempt 1)
+00:00:18 [INFO] 📄 Fetching Page 79 (Attempt 1)
+00:00:18 [INFO] 📄 Fetching Page 80 (Attempt 1)
+00:00:21 [INFO] 📄 Fetching Page 81 (Attempt 1)
+00:00:21 [INFO] 📄 Fetching Page 82 (Attempt 1)
+00:00:21 [INFO] 📄 Fetching Page 83 (Attempt 1)
+00:00:21 [INFO] 📄 Fetching Page 84 (Attempt 1)
+00:00:21 [INFO] 📄 Fetching Page 85 (Attempt 1)
+00:00:21 [INFO] 📄 Fetching Page 86 (Attempt 1)
+00:00:21 [INFO] 📄 Fetching Page 87 (Attempt 1)
+00:00:21 [INFO] 📄 Fetching Page 88 (Attempt 1)
+00:00:21 [INFO] 📄 Fetching Page 89 (Attempt 1)
+00:00:21 [INFO] 📄 Fetching Page 90 (Attempt 1)
+00:00:23 [INFO] 📄 Fetching Page 91 (Attempt 1)
+00:00:23 [INFO] 📄 Fetching Page 92 (Attempt 1)
+00:00:23 [INFO] 📄 Fetching Page 93 (Attempt 1)
+00:00:23 [INFO] 📄 Fetching Page 94 (Attempt 1)
+00:00:23 [INFO] 📄 Fetching Page 95 (Attempt 1)
+00:00:23 [INFO] 📄 Fetching Page 96 (Attempt 1)
+00:00:23 [INFO] 📄 Fetching Page 97 (Attempt 1)
+00:00:23 [INFO] 📄 Fetching Page 98 (Attempt 1)
+00:00:23 [INFO] 📄 Fetching Page 99 (Attempt 1)
+00:00:23 [INFO] 📄 Fetching Page 100 (Attempt 1)
+00:00:25 [INFO] 📄 Fetching Page 101 (Attempt 1)
+00:00:25 [INFO] 📄 Fetching Page 102 (Attempt 1)
+00:00:25 [INFO] 📄 Fetching Page 103 (Attempt 1)
+00:00:25 [INFO] 📄 Fetching Page 104 (Attempt 1)
+00:00:25 [INFO] 📄 Fetching Page 105 (Attempt 1)
+00:00:25 [INFO] 📄 Fetching Page 106 (Attempt 1)
+00:00:25 [INFO] 📄 Fetching Page 107 (Attempt 1)
+00:00:25 [INFO] 📄 Fetching Page 108 (Attempt 1)
+00:00:25 [INFO] 📄 Fetching Page 109 (Attempt 1)
+00:00:25 [INFO] 📄 Fetching Page 110 (Attempt 1)
+00:00:28 [INFO] 🛑 Stopping at Page 101: Duplicate or empty.
+00:00:28 [INFO] ✅ Merged 100 pages to: /root/TenFin/scraped_data/Final_Tender_List 17-04-2025.txt
+00:00:28 [INFO] 🏁 Scrape run completed.
+00:00:28 [INFO]    Duration: 0:00:26
+00:00:28 [INFO]    Merged 100 unique pages.
+00:00:28 [INFO]    Final output: /root/TenFin/scraped_data/Final_Tender_List 17-04-2025.txt
+11:24:09 [INFO] 🚀 Starting concurrent scrape
+11:24:10 [INFO] Launched 10 browser pages for concurrent fetching.
+11:24:10 [INFO] 🚀 Fetching batch: Pages 1 to 10
+11:24:10 [INFO] 📄 Fetching Page 1 (Attempt 1/3)
+11:24:10 [INFO] 📄 Fetching Page 2 (Attempt 1/3)
+11:24:10 [INFO] 📄 Fetching Page 3 (Attempt 1/3)
+11:24:10 [INFO] 📄 Fetching Page 4 (Attempt 1/3)
+11:24:10 [INFO] 📄 Fetching Page 5 (Attempt 1/3)
+11:24:10 [INFO] 📄 Fetching Page 6 (Attempt 1/3)
+11:24:10 [INFO] 📄 Fetching Page 7 (Attempt 1/3)
+11:24:10 [INFO] 📄 Fetching Page 8 (Attempt 1/3)
+11:24:10 [INFO] 📄 Fetching Page 9 (Attempt 1/3)
+11:24:10 [INFO] 📄 Fetching Page 10 (Attempt 1/3)
+11:24:12 [INFO]   ✅ Page 10 fetched and cleaned successfully.
+11:24:12 [INFO]   ✅ Page 3 fetched and cleaned successfully.
+11:24:12 [INFO]   ✅ Page 9 fetched and cleaned successfully.
+11:24:12 [INFO]   ✅ Page 1 fetched and cleaned successfully.
+11:24:12 [INFO]   ✅ Page 2 fetched and cleaned successfully.
+11:24:13 [INFO]   ✅ Page 6 fetched and cleaned successfully.
+11:24:13 [INFO]   ✅ Page 5 fetched and cleaned successfully.
+11:24:13 [INFO]   ✅ Page 8 fetched and cleaned successfully.
+11:24:13 [INFO]   ✅ Page 7 fetched and cleaned successfully.
+11:24:13 [INFO]   ✅ Page 4 fetched and cleaned successfully.
+11:24:13 [INFO] 🚀 Fetching batch: Pages 11 to 20
+11:24:13 [INFO] 📄 Fetching Page 11 (Attempt 1/3)
+11:24:13 [INFO] 📄 Fetching Page 12 (Attempt 1/3)
+11:24:13 [INFO] 📄 Fetching Page 13 (Attempt 1/3)
+11:24:13 [INFO] 📄 Fetching Page 14 (Attempt 1/3)
+11:24:13 [INFO] 📄 Fetching Page 15 (Attempt 1/3)
+11:24:13 [INFO] 📄 Fetching Page 16 (Attempt 1/3)
+11:24:13 [INFO] 📄 Fetching Page 17 (Attempt 1/3)
+11:24:13 [INFO] 📄 Fetching Page 18 (Attempt 1/3)
+11:24:13 [INFO] 📄 Fetching Page 19 (Attempt 1/3)
+11:24:13 [INFO] 📄 Fetching Page 20 (Attempt 1/3)
+11:24:15 [INFO]   ✅ Page 18 fetched and cleaned successfully.
+11:24:15 [INFO]   ✅ Page 16 fetched and cleaned successfully.
+11:24:15 [INFO]   ✅ Page 20 fetched and cleaned successfully.
+11:24:15 [INFO]   ✅ Page 14 fetched and cleaned successfully.
+11:24:15 [INFO]   ✅ Page 15 fetched and cleaned successfully.
+11:24:15 [INFO]   ✅ Page 11 fetched and cleaned successfully.
+11:24:15 [INFO]   ✅ Page 13 fetched and cleaned successfully.
+11:24:15 [INFO]   ✅ Page 12 fetched and cleaned successfully.
+11:24:15 [INFO]   ✅ Page 19 fetched and cleaned successfully.
+11:24:15 [INFO]   ✅ Page 17 fetched and cleaned successfully.
+11:24:15 [INFO] 🚀 Fetching batch: Pages 21 to 30
+11:24:15 [INFO] 📄 Fetching Page 21 (Attempt 1/3)
+11:24:15 [INFO] 📄 Fetching Page 22 (Attempt 1/3)
+11:24:15 [INFO] 📄 Fetching Page 23 (Attempt 1/3)
+11:24:15 [INFO] 📄 Fetching Page 24 (Attempt 1/3)
+11:24:15 [INFO] 📄 Fetching Page 25 (Attempt 1/3)
+11:24:15 [INFO] 📄 Fetching Page 26 (Attempt 1/3)
+11:24:15 [INFO] 📄 Fetching Page 27 (Attempt 1/3)
+11:24:15 [INFO] 📄 Fetching Page 28 (Attempt 1/3)
+11:24:15 [INFO] 📄 Fetching Page 29 (Attempt 1/3)
+11:24:15 [INFO] 📄 Fetching Page 30 (Attempt 1/3)
+11:24:17 [INFO]   ✅ Page 27 fetched and cleaned successfully.
+11:24:17 [INFO]   ✅ Page 23 fetched and cleaned successfully.
+11:24:17 [INFO]   ✅ Page 26 fetched and cleaned successfully.
+11:24:17 [INFO]   ✅ Page 21 fetched and cleaned successfully.
+11:24:17 [INFO]   ✅ Page 22 fetched and cleaned successfully.
+11:24:17 [INFO]   ✅ Page 24 fetched and cleaned successfully.
+11:24:17 [INFO]   ✅ Page 28 fetched and cleaned successfully.
+11:24:17 [INFO]   ✅ Page 30 fetched and cleaned successfully.
+11:24:17 [INFO]   ✅ Page 25 fetched and cleaned successfully.
+11:24:17 [INFO]   ✅ Page 29 fetched and cleaned successfully.
+11:24:17 [INFO] 🚀 Fetching batch: Pages 31 to 40
+11:24:17 [INFO] 📄 Fetching Page 31 (Attempt 1/3)
+11:24:17 [INFO] 📄 Fetching Page 32 (Attempt 1/3)
+11:24:17 [INFO] 📄 Fetching Page 33 (Attempt 1/3)
+11:24:17 [INFO] 📄 Fetching Page 34 (Attempt 1/3)
+11:24:17 [INFO] 📄 Fetching Page 35 (Attempt 1/3)
+11:24:17 [INFO] 📄 Fetching Page 36 (Attempt 1/3)
+11:24:17 [INFO] 📄 Fetching Page 37 (Attempt 1/3)
+11:24:17 [INFO] 📄 Fetching Page 38 (Attempt 1/3)
+11:24:17 [INFO] 📄 Fetching Page 39 (Attempt 1/3)
+11:24:17 [INFO] 📄 Fetching Page 40 (Attempt 1/3)
+11:24:19 [INFO]   ✅ Page 32 fetched and cleaned successfully.
+11:24:19 [INFO]   ✅ Page 34 fetched and cleaned successfully.
+11:24:19 [INFO]   ✅ Page 37 fetched and cleaned successfully.
+11:24:19 [INFO]   ✅ Page 36 fetched and cleaned successfully.
+11:24:19 [INFO]   ✅ Page 35 fetched and cleaned successfully.
+11:24:19 [INFO]   ✅ Page 40 fetched and cleaned successfully.
+11:24:19 [INFO]   ✅ Page 31 fetched and cleaned successfully.
+11:24:19 [INFO]   ✅ Page 38 fetched and cleaned successfully.
+11:24:19 [INFO]   ✅ Page 33 fetched and cleaned successfully.
+11:24:20 [INFO]   ✅ Page 39 fetched and cleaned successfully.
+11:24:20 [INFO] 🚀 Fetching batch: Pages 41 to 50
+11:24:20 [INFO] 📄 Fetching Page 41 (Attempt 1/3)
+11:24:20 [INFO] 📄 Fetching Page 42 (Attempt 1/3)
+11:24:20 [INFO] 📄 Fetching Page 43 (Attempt 1/3)
+11:24:20 [INFO] 📄 Fetching Page 44 (Attempt 1/3)
+11:24:20 [INFO] 📄 Fetching Page 45 (Attempt 1/3)
+11:24:20 [INFO] 📄 Fetching Page 46 (Attempt 1/3)
+11:24:20 [INFO] 📄 Fetching Page 47 (Attempt 1/3)
+11:24:20 [INFO] 📄 Fetching Page 48 (Attempt 1/3)
+11:24:20 [INFO] 📄 Fetching Page 49 (Attempt 1/3)
+11:24:20 [INFO] 📄 Fetching Page 50 (Attempt 1/3)
+11:24:22 [INFO]   ✅ Page 48 fetched and cleaned successfully.
+11:24:22 [INFO]   ✅ Page 42 fetched and cleaned successfully.
+11:24:22 [INFO]   ✅ Page 49 fetched and cleaned successfully.
+11:24:22 [INFO]   ✅ Page 45 fetched and cleaned successfully.
+11:24:22 [INFO]   ✅ Page 46 fetched and cleaned successfully.
+11:24:22 [INFO]   ✅ Page 43 fetched and cleaned successfully.
+11:24:22 [INFO]   ✅ Page 44 fetched and cleaned successfully.
+11:24:22 [INFO]   ✅ Page 50 fetched and cleaned successfully.
+11:24:22 [INFO]   ✅ Page 47 fetched and cleaned successfully.
+11:24:32 [INFO]   ✅ Page 41 fetched and cleaned successfully.
+11:24:32 [INFO] 🚀 Fetching batch: Pages 51 to 60
+11:24:32 [INFO] 📄 Fetching Page 51 (Attempt 1/3)
+11:24:32 [INFO] 📄 Fetching Page 52 (Attempt 1/3)
+11:24:32 [INFO] 📄 Fetching Page 53 (Attempt 1/3)
+11:24:32 [INFO] 📄 Fetching Page 54 (Attempt 1/3)
+11:24:32 [INFO] 📄 Fetching Page 55 (Attempt 1/3)
+11:24:32 [INFO] 📄 Fetching Page 56 (Attempt 1/3)
+11:24:32 [INFO] 📄 Fetching Page 57 (Attempt 1/3)
+11:24:32 [INFO] 📄 Fetching Page 58 (Attempt 1/3)
+11:24:32 [INFO] 📄 Fetching Page 59 (Attempt 1/3)
+11:24:32 [INFO] 📄 Fetching Page 60 (Attempt 1/3)
+11:24:35 [INFO]   ✅ Page 58 fetched and cleaned successfully.
+11:24:35 [INFO]   ✅ Page 54 fetched and cleaned successfully.
+11:24:35 [INFO]   ✅ Page 52 fetched and cleaned successfully.
+11:24:35 [INFO]   ✅ Page 51 fetched and cleaned successfully.
+11:24:35 [INFO]   ✅ Page 60 fetched and cleaned successfully.
+11:24:35 [INFO]   ✅ Page 57 fetched and cleaned successfully.
+11:24:35 [INFO]   ✅ Page 56 fetched and cleaned successfully.
+11:24:35 [INFO]   ✅ Page 53 fetched and cleaned successfully.
+11:24:35 [INFO]   ✅ Page 55 fetched and cleaned successfully.
+11:24:35 [INFO]   ✅ Page 59 fetched and cleaned successfully.
+11:24:35 [INFO] 🚀 Fetching batch: Pages 61 to 70
+11:24:35 [INFO] 📄 Fetching Page 61 (Attempt 1/3)
+11:24:35 [INFO] 📄 Fetching Page 62 (Attempt 1/3)
+11:24:35 [INFO] 📄 Fetching Page 63 (Attempt 1/3)
+11:24:35 [INFO] 📄 Fetching Page 64 (Attempt 1/3)
+11:24:35 [INFO] 📄 Fetching Page 65 (Attempt 1/3)
+11:24:35 [INFO] 📄 Fetching Page 66 (Attempt 1/3)
+11:24:35 [INFO] 📄 Fetching Page 67 (Attempt 1/3)
+11:24:35 [INFO] 📄 Fetching Page 68 (Attempt 1/3)
+11:24:35 [INFO] 📄 Fetching Page 69 (Attempt 1/3)
+11:24:35 [INFO] 📄 Fetching Page 70 (Attempt 1/3)
+11:24:37 [INFO]   ✅ Page 62 fetched and cleaned successfully.
+11:24:37 [INFO]   ✅ Page 69 fetched and cleaned successfully.
+11:24:37 [INFO]   ✅ Page 68 fetched and cleaned successfully.
+11:24:37 [INFO]   ✅ Page 61 fetched and cleaned successfully.
+11:24:37 [INFO]   ✅ Page 67 fetched and cleaned successfully.
+11:24:37 [INFO]   ✅ Page 63 fetched and cleaned successfully.
+11:24:37 [INFO]   ✅ Page 65 fetched and cleaned successfully.
+11:24:37 [INFO]   ✅ Page 66 fetched and cleaned successfully.
+11:24:37 [INFO]   ✅ Page 70 fetched and cleaned successfully.
+11:24:37 [INFO]   ✅ Page 64 fetched and cleaned successfully.
+11:24:37 [INFO] 🚀 Fetching batch: Pages 71 to 80
+11:24:37 [INFO] 📄 Fetching Page 71 (Attempt 1/3)
+11:24:37 [INFO] 📄 Fetching Page 72 (Attempt 1/3)
+11:24:37 [INFO] 📄 Fetching Page 73 (Attempt 1/3)
+11:24:37 [INFO] 📄 Fetching Page 74 (Attempt 1/3)
+11:24:37 [INFO] 📄 Fetching Page 75 (Attempt 1/3)
+11:24:37 [INFO] 📄 Fetching Page 76 (Attempt 1/3)
+11:24:37 [INFO] 📄 Fetching Page 77 (Attempt 1/3)
+11:24:37 [INFO] 📄 Fetching Page 78 (Attempt 1/3)
+11:24:37 [INFO] 📄 Fetching Page 79 (Attempt 1/3)
+11:24:37 [INFO] 📄 Fetching Page 80 (Attempt 1/3)
+11:24:40 [INFO]   ✅ Page 77 fetched and cleaned successfully.
+11:24:40 [INFO]   ✅ Page 76 fetched and cleaned successfully.
+11:24:40 [INFO]   ✅ Page 75 fetched and cleaned successfully.
+11:24:40 [INFO]   ✅ Page 73 fetched and cleaned successfully.
+11:24:40 [INFO]   ✅ Page 80 fetched and cleaned successfully.
+11:24:40 [INFO]   ✅ Page 78 fetched and cleaned successfully.
+11:24:40 [INFO]   ✅ Page 74 fetched and cleaned successfully.
+11:24:40 [INFO]   ✅ Page 72 fetched and cleaned successfully.
+11:24:40 [INFO]   ✅ Page 71 fetched and cleaned successfully.
+11:24:40 [INFO]   ✅ Page 79 fetched and cleaned successfully.
+11:24:40 [INFO] 🚀 Fetching batch: Pages 81 to 90
+11:24:40 [INFO] 📄 Fetching Page 81 (Attempt 1/3)
+11:24:40 [INFO] 📄 Fetching Page 82 (Attempt 1/3)
+11:24:40 [INFO] 📄 Fetching Page 83 (Attempt 1/3)
+11:24:40 [INFO] 📄 Fetching Page 84 (Attempt 1/3)
+11:24:40 [INFO] 📄 Fetching Page 85 (Attempt 1/3)
+11:24:40 [INFO] 📄 Fetching Page 86 (Attempt 1/3)
+11:24:40 [INFO] 📄 Fetching Page 87 (Attempt 1/3)
+11:24:40 [INFO] 📄 Fetching Page 88 (Attempt 1/3)
+11:24:40 [INFO] 📄 Fetching Page 89 (Attempt 1/3)
+11:24:40 [INFO] 📄 Fetching Page 90 (Attempt 1/3)
+11:24:42 [INFO]   ✅ Page 83 fetched and cleaned successfully.
+11:24:42 [INFO]   ✅ Page 82 fetched and cleaned successfully.
+11:24:42 [INFO]   ✅ Page 87 fetched and cleaned successfully.
+11:24:42 [INFO]   ✅ Page 86 fetched and cleaned successfully.
+11:24:42 [INFO]   ✅ Page 81 fetched and cleaned successfully.
+11:24:42 [INFO]   ✅ Page 88 fetched and cleaned successfully.
+11:24:42 [INFO]   ✅ Page 85 fetched and cleaned successfully.
+11:24:42 [INFO]   ✅ Page 90 fetched and cleaned successfully.
+11:24:42 [INFO]   ✅ Page 89 fetched and cleaned successfully.
+11:24:42 [INFO]   ✅ Page 84 fetched and cleaned successfully.
+11:24:42 [INFO] 🚀 Fetching batch: Pages 91 to 100
+11:24:42 [INFO] 📄 Fetching Page 91 (Attempt 1/3)
+11:24:42 [INFO] 📄 Fetching Page 92 (Attempt 1/3)
+11:24:42 [INFO] 📄 Fetching Page 93 (Attempt 1/3)
+11:24:42 [INFO] 📄 Fetching Page 94 (Attempt 1/3)
+11:24:42 [INFO] 📄 Fetching Page 95 (Attempt 1/3)
+11:24:42 [INFO] 📄 Fetching Page 96 (Attempt 1/3)
+11:24:42 [INFO] 📄 Fetching Page 97 (Attempt 1/3)
+11:24:42 [INFO] 📄 Fetching Page 98 (Attempt 1/3)
+11:24:42 [INFO] 📄 Fetching Page 99 (Attempt 1/3)
+11:24:42 [INFO] 📄 Fetching Page 100 (Attempt 1/3)
+11:24:44 [INFO]   ✅ Page 99 fetched and cleaned successfully.
+11:24:44 [INFO]   ✅ Page 96 fetched and cleaned successfully.
+11:24:44 [INFO]   ✅ Page 98 fetched and cleaned successfully.
+11:24:45 [INFO]   ✅ Page 95 fetched and cleaned successfully.
+11:24:45 [INFO]   ✅ Page 94 fetched and cleaned successfully.
+11:24:45 [INFO]   ✅ Page 100 fetched and cleaned successfully.
+11:24:45 [INFO]   ✅ Page 92 fetched and cleaned successfully.
+11:24:45 [INFO]   ✅ Page 91 fetched and cleaned successfully.
+11:24:45 [INFO]   ✅ Page 93 fetched and cleaned successfully.
+11:24:45 [INFO]   ✅ Page 97 fetched and cleaned successfully.
+11:24:45 [INFO] 🚀 Fetching batch: Pages 101 to 110
+11:24:45 [INFO] 📄 Fetching Page 101 (Attempt 1/3)
+11:24:45 [INFO] 📄 Fetching Page 102 (Attempt 1/3)
+11:24:45 [INFO] 📄 Fetching Page 103 (Attempt 1/3)
+11:24:45 [INFO] 📄 Fetching Page 104 (Attempt 1/3)
+11:24:45 [INFO] 📄 Fetching Page 105 (Attempt 1/3)
+11:24:45 [INFO] 📄 Fetching Page 106 (Attempt 1/3)
+11:24:45 [INFO] 📄 Fetching Page 107 (Attempt 1/3)
+11:24:45 [INFO] 📄 Fetching Page 108 (Attempt 1/3)
+11:24:45 [INFO] 📄 Fetching Page 109 (Attempt 1/3)
+11:24:45 [INFO] 📄 Fetching Page 110 (Attempt 1/3)
+11:24:47 [INFO]   ✅ Page 107 fetched and cleaned successfully.
+11:24:47 [INFO]   ✅ Page 103 fetched and cleaned successfully.
+11:24:47 [INFO]   ✅ Page 109 fetched and cleaned successfully.
+11:24:47 [INFO]   ✅ Page 101 fetched and cleaned successfully.
+11:24:47 [INFO]   ✅ Page 106 fetched and cleaned successfully.
+11:24:47 [INFO]   ✅ Page 105 fetched and cleaned successfully.
+11:24:47 [INFO]   ✅ Page 108 fetched and cleaned successfully.
+11:24:47 [INFO]   ✅ Page 104 fetched and cleaned successfully.
+11:24:47 [INFO]   ✅ Page 102 fetched and cleaned successfully.
+11:24:47 [INFO]   ✅ Page 110 fetched and cleaned successfully.
+11:24:47 [INFO] 🛑 Stopping: Duplicate content detected on page 102 (same as previous valid page).
+11:24:47 [INFO] Closing browser.
+11:24:47 [INFO] Fetching complete. Saved 101 intermediate page files.
+11:24:47 [INFO] Merging unique pages into: /root/TenFin/scraped_data/Final_Tender_List_2025-04-17.txt
+11:24:47 [INFO] Looking for raw pages in: /root/TenFin/scraped_data/RawPages
+11:24:47 [INFO] Found 101 raw page files to process.
+11:24:47 [INFO] ✅ Successfully merged 101 unique pages (out of 101 found) to: /root/TenFin/scraped_data/Final_Tender_List_2025-04-17.txt
+11:24:47 [INFO] 🏁 Scrape run completed.
+11:24:47 [INFO]    Duration: 0:00:38.161825
+11:24:47 [INFO]    Merged 101 unique pages.
+11:24:47 [INFO]    Final output: /root/TenFin/scraped_data/Final_Tender_List_2025-04-17.txt
+11:41:50 [INFO] 🚀 Starting concurrent scrape
+11:41:50 [INFO] Launched 10 browser pages for concurrent fetching.
+11:41:50 [INFO] 🚀 Fetching batch: Pages 1 to 10
+11:41:50 [INFO] 📄 Fetching Page 1 (Attempt 1/3)
+11:41:50 [INFO] 📄 Fetching Page 2 (Attempt 1/3)
+11:41:50 [INFO] 📄 Fetching Page 3 (Attempt 1/3)
+11:41:50 [INFO] 📄 Fetching Page 4 (Attempt 1/3)
+11:41:50 [INFO] 📄 Fetching Page 5 (Attempt 1/3)
+11:41:50 [INFO] 📄 Fetching Page 6 (Attempt 1/3)
+11:41:50 [INFO] 📄 Fetching Page 7 (Attempt 1/3)
+11:41:50 [INFO] 📄 Fetching Page 8 (Attempt 1/3)
+11:41:50 [INFO] 📄 Fetching Page 9 (Attempt 1/3)
+11:41:50 [INFO] 📄 Fetching Page 10 (Attempt 1/3)
+11:41:52 [INFO]   ✅ Page 10 processed successfully (HTML parse).
+11:41:52 [INFO]   ✅ Page 5 processed successfully (HTML parse).
+11:41:53 [INFO]   ✅ Page 4 processed successfully (HTML parse).
+11:41:53 [INFO]   ✅ Page 3 processed successfully (HTML parse).
+11:41:53 [INFO]   ✅ Page 9 processed successfully (HTML parse).
+11:41:53 [INFO]   ✅ Page 2 processed successfully (HTML parse).
+11:41:53 [INFO]   ✅ Page 7 processed successfully (HTML parse).
+11:41:53 [INFO]   ✅ Page 6 processed successfully (HTML parse).
+11:41:53 [INFO]   ✅ Page 1 processed successfully (HTML parse).
+11:41:53 [INFO]   ✅ Page 8 processed successfully (HTML parse).
+11:41:53 [INFO] 🚀 Fetching batch: Pages 11 to 20
+11:41:53 [INFO] 📄 Fetching Page 11 (Attempt 1/3)
+11:41:53 [INFO] 📄 Fetching Page 12 (Attempt 1/3)
+11:41:53 [INFO] 📄 Fetching Page 13 (Attempt 1/3)
+11:41:53 [INFO] 📄 Fetching Page 14 (Attempt 1/3)
+11:41:53 [INFO] 📄 Fetching Page 15 (Attempt 1/3)
+11:41:53 [INFO] 📄 Fetching Page 16 (Attempt 1/3)
+11:41:53 [INFO] 📄 Fetching Page 17 (Attempt 1/3)
+11:41:53 [INFO] 📄 Fetching Page 18 (Attempt 1/3)
+11:41:53 [INFO] 📄 Fetching Page 19 (Attempt 1/3)
+11:41:53 [INFO] 📄 Fetching Page 20 (Attempt 1/3)
+11:41:55 [INFO]   ✅ Page 17 processed successfully (HTML parse).
+11:41:55 [INFO]   ✅ Page 16 processed successfully (HTML parse).
+11:41:55 [INFO]   ✅ Page 13 processed successfully (HTML parse).
+11:41:55 [INFO]   ✅ Page 20 processed successfully (HTML parse).
+11:41:55 [INFO]   ✅ Page 12 processed successfully (HTML parse).
+11:41:55 [INFO]   ✅ Page 11 processed successfully (HTML parse).
+11:41:55 [INFO]   ✅ Page 19 processed successfully (HTML parse).
+11:41:55 [INFO]   ✅ Page 14 processed successfully (HTML parse).
+11:41:55 [INFO]   ✅ Page 18 processed successfully (HTML parse).
+11:41:55 [INFO]   ✅ Page 15 processed successfully (HTML parse).
+11:41:55 [INFO] 🚀 Fetching batch: Pages 21 to 30
+11:41:55 [INFO] 📄 Fetching Page 21 (Attempt 1/3)
+11:41:55 [INFO] 📄 Fetching Page 22 (Attempt 1/3)
+11:41:55 [INFO] 📄 Fetching Page 23 (Attempt 1/3)
+11:41:55 [INFO] 📄 Fetching Page 24 (Attempt 1/3)
+11:41:55 [INFO] 📄 Fetching Page 25 (Attempt 1/3)
+11:41:55 [INFO] 📄 Fetching Page 26 (Attempt 1/3)
+11:41:55 [INFO] 📄 Fetching Page 27 (Attempt 1/3)
+11:41:55 [INFO] 📄 Fetching Page 28 (Attempt 1/3)
+11:41:55 [INFO] 📄 Fetching Page 29 (Attempt 1/3)
+11:41:55 [INFO] 📄 Fetching Page 30 (Attempt 1/3)
+11:41:57 [INFO]   ✅ Page 21 processed successfully (HTML parse).
+11:41:57 [INFO]   ✅ Page 27 processed successfully (HTML parse).
+11:41:57 [INFO]   ✅ Page 26 processed successfully (HTML parse).
+11:41:58 [INFO]   ✅ Page 29 processed successfully (HTML parse).
+11:41:58 [INFO]   ✅ Page 30 processed successfully (HTML parse).
+11:41:58 [INFO]   ✅ Page 23 processed successfully (HTML parse).
+11:41:58 [INFO]   ✅ Page 24 processed successfully (HTML parse).
+11:41:58 [INFO]   ✅ Page 22 processed successfully (HTML parse).
+11:41:58 [INFO]   ✅ Page 28 processed successfully (HTML parse).
+11:41:58 [INFO]   ✅ Page 25 processed successfully (HTML parse).
+11:41:58 [INFO] 🚀 Fetching batch: Pages 31 to 40
+11:41:58 [INFO] 📄 Fetching Page 31 (Attempt 1/3)
+11:41:58 [INFO] 📄 Fetching Page 32 (Attempt 1/3)
+11:41:58 [INFO] 📄 Fetching Page 33 (Attempt 1/3)
+11:41:58 [INFO] 📄 Fetching Page 34 (Attempt 1/3)
+11:41:58 [INFO] 📄 Fetching Page 35 (Attempt 1/3)
+11:41:58 [INFO] 📄 Fetching Page 36 (Attempt 1/3)
+11:41:58 [INFO] 📄 Fetching Page 37 (Attempt 1/3)
+11:41:58 [INFO] 📄 Fetching Page 38 (Attempt 1/3)
+11:41:58 [INFO] 📄 Fetching Page 39 (Attempt 1/3)
+11:41:58 [INFO] 📄 Fetching Page 40 (Attempt 1/3)
+11:42:00 [INFO]   ✅ Page 40 processed successfully (HTML parse).
+11:42:00 [INFO]   ✅ Page 38 processed successfully (HTML parse).
+11:42:00 [INFO]   ✅ Page 37 processed successfully (HTML parse).
+11:42:00 [INFO]   ✅ Page 33 processed successfully (HTML parse).
+11:42:00 [INFO]   ✅ Page 31 processed successfully (HTML parse).
+11:42:00 [INFO]   ✅ Page 39 processed successfully (HTML parse).
+11:42:00 [INFO]   ✅ Page 35 processed successfully (HTML parse).
+11:42:00 [INFO]   ✅ Page 36 processed successfully (HTML parse).
+11:42:00 [INFO]   ✅ Page 32 processed successfully (HTML parse).
+11:42:00 [INFO]   ✅ Page 34 processed successfully (HTML parse).
+11:42:00 [INFO] 🚀 Fetching batch: Pages 41 to 50
+11:42:00 [INFO] 📄 Fetching Page 41 (Attempt 1/3)
+11:42:00 [INFO] 📄 Fetching Page 42 (Attempt 1/3)
+11:42:00 [INFO] 📄 Fetching Page 43 (Attempt 1/3)
+11:42:00 [INFO] 📄 Fetching Page 44 (Attempt 1/3)
+11:42:00 [INFO] 📄 Fetching Page 45 (Attempt 1/3)
+11:42:00 [INFO] 📄 Fetching Page 46 (Attempt 1/3)
+11:42:00 [INFO] 📄 Fetching Page 47 (Attempt 1/3)
+11:42:00 [INFO] 📄 Fetching Page 48 (Attempt 1/3)
+11:42:00 [INFO] 📄 Fetching Page 49 (Attempt 1/3)
+11:42:00 [INFO] 📄 Fetching Page 50 (Attempt 1/3)
+11:42:02 [INFO]   ✅ Page 46 processed successfully (HTML parse).
+11:42:02 [INFO]   ✅ Page 48 processed successfully (HTML parse).
+11:42:02 [INFO]   ✅ Page 50 processed successfully (HTML parse).
+11:42:02 [INFO]   ✅ Page 42 processed successfully (HTML parse).
+11:42:02 [INFO]   ✅ Page 44 processed successfully (HTML parse).
+11:42:02 [INFO]   ✅ Page 45 processed successfully (HTML parse).
+11:42:03 [INFO]   ✅ Page 43 processed successfully (HTML parse).
+11:42:03 [INFO]   ✅ Page 47 processed successfully (HTML parse).
+11:42:03 [INFO]   ✅ Page 49 processed successfully (HTML parse).
+11:42:03 [INFO]   ✅ Page 41 processed successfully (HTML parse).
+11:42:03 [INFO] 🚀 Fetching batch: Pages 51 to 60
+11:42:03 [INFO] 📄 Fetching Page 51 (Attempt 1/3)
+11:42:03 [INFO] 📄 Fetching Page 52 (Attempt 1/3)
+11:42:03 [INFO] 📄 Fetching Page 53 (Attempt 1/3)
+11:42:03 [INFO] 📄 Fetching Page 54 (Attempt 1/3)
+11:42:03 [INFO] 📄 Fetching Page 55 (Attempt 1/3)
+11:42:03 [INFO] 📄 Fetching Page 56 (Attempt 1/3)
+11:42:03 [INFO] 📄 Fetching Page 57 (Attempt 1/3)
+11:42:03 [INFO] 📄 Fetching Page 58 (Attempt 1/3)
+11:42:03 [INFO] 📄 Fetching Page 59 (Attempt 1/3)
+11:42:03 [INFO] 📄 Fetching Page 60 (Attempt 1/3)
+11:42:05 [INFO]   ✅ Page 58 processed successfully (HTML parse).
+11:42:05 [INFO]   ✅ Page 51 processed successfully (HTML parse).
+11:42:05 [INFO]   ✅ Page 53 processed successfully (HTML parse).
+11:42:05 [INFO]   ✅ Page 54 processed successfully (HTML parse).
+11:42:05 [INFO]   ✅ Page 55 processed successfully (HTML parse).
+11:42:05 [INFO]   ✅ Page 52 processed successfully (HTML parse).
+11:42:05 [INFO]   ✅ Page 60 processed successfully (HTML parse).
+11:42:05 [INFO]   ✅ Page 56 processed successfully (HTML parse).
+11:42:05 [INFO]   ✅ Page 57 processed successfully (HTML parse).
+11:42:05 [INFO]   ✅ Page 59 processed successfully (HTML parse).
+11:42:05 [INFO] 🚀 Fetching batch: Pages 61 to 70
+11:42:05 [INFO] 📄 Fetching Page 61 (Attempt 1/3)
+11:42:05 [INFO] 📄 Fetching Page 62 (Attempt 1/3)
+11:42:05 [INFO] 📄 Fetching Page 63 (Attempt 1/3)
+11:42:05 [INFO] 📄 Fetching Page 64 (Attempt 1/3)
+11:42:05 [INFO] 📄 Fetching Page 65 (Attempt 1/3)
+11:42:05 [INFO] 📄 Fetching Page 66 (Attempt 1/3)
+11:42:05 [INFO] 📄 Fetching Page 67 (Attempt 1/3)
+11:42:05 [INFO] 📄 Fetching Page 68 (Attempt 1/3)
+11:42:05 [INFO] 📄 Fetching Page 69 (Attempt 1/3)
+11:42:05 [INFO] 📄 Fetching Page 70 (Attempt 1/3)
+11:42:07 [INFO]   ✅ Page 61 processed successfully (HTML parse).
+11:42:07 [INFO]   ✅ Page 66 processed successfully (HTML parse).
+11:42:07 [INFO]   ✅ Page 70 processed successfully (HTML parse).
+11:42:07 [INFO]   ✅ Page 65 processed successfully (HTML parse).
+11:42:07 [INFO]   ✅ Page 69 processed successfully (HTML parse).
+11:42:08 [INFO]   ✅ Page 67 processed successfully (HTML parse).
+11:42:08 [INFO]   ✅ Page 68 processed successfully (HTML parse).
+11:42:08 [INFO]   ✅ Page 63 processed successfully (HTML parse).
+11:42:08 [INFO]   ✅ Page 64 processed successfully (HTML parse).
+11:42:08 [INFO]   ✅ Page 62 processed successfully (HTML parse).
+11:42:08 [INFO] 🚀 Fetching batch: Pages 71 to 80
+11:42:08 [INFO] 📄 Fetching Page 71 (Attempt 1/3)
+11:42:08 [INFO] 📄 Fetching Page 72 (Attempt 1/3)
+11:42:08 [INFO] 📄 Fetching Page 73 (Attempt 1/3)
+11:42:08 [INFO] 📄 Fetching Page 74 (Attempt 1/3)
+11:42:08 [INFO] 📄 Fetching Page 75 (Attempt 1/3)
+11:42:08 [INFO] 📄 Fetching Page 76 (Attempt 1/3)
+11:42:08 [INFO] 📄 Fetching Page 77 (Attempt 1/3)
+11:42:08 [INFO] 📄 Fetching Page 78 (Attempt 1/3)
+11:42:08 [INFO] 📄 Fetching Page 79 (Attempt 1/3)
+11:42:08 [INFO] 📄 Fetching Page 80 (Attempt 1/3)
+11:42:10 [INFO]   ✅ Page 77 processed successfully (HTML parse).
+11:42:10 [INFO]   ✅ Page 71 processed successfully (HTML parse).
+11:42:10 [INFO]   ✅ Page 75 processed successfully (HTML parse).
+11:42:10 [INFO]   ✅ Page 73 processed successfully (HTML parse).
+11:42:10 [INFO]   ✅ Page 76 processed successfully (HTML parse).
+11:42:10 [INFO]   ✅ Page 79 processed successfully (HTML parse).
+11:42:10 [INFO]   ✅ Page 72 processed successfully (HTML parse).
+11:42:10 [INFO]   ✅ Page 78 processed successfully (HTML parse).
+11:42:10 [INFO]   ✅ Page 74 processed successfully (HTML parse).
+11:42:10 [INFO]   ✅ Page 80 processed successfully (HTML parse).
+11:42:10 [INFO] 🚀 Fetching batch: Pages 81 to 90
+11:42:10 [INFO] 📄 Fetching Page 81 (Attempt 1/3)
+11:42:10 [INFO] 📄 Fetching Page 82 (Attempt 1/3)
+11:42:10 [INFO] 📄 Fetching Page 83 (Attempt 1/3)
+11:42:10 [INFO] 📄 Fetching Page 84 (Attempt 1/3)
+11:42:10 [INFO] 📄 Fetching Page 85 (Attempt 1/3)
+11:42:10 [INFO] 📄 Fetching Page 86 (Attempt 1/3)
+11:42:10 [INFO] 📄 Fetching Page 87 (Attempt 1/3)
+11:42:10 [INFO] 📄 Fetching Page 88 (Attempt 1/3)
+11:42:10 [INFO] 📄 Fetching Page 89 (Attempt 1/3)
+11:42:10 [INFO] 📄 Fetching Page 90 (Attempt 1/3)
+11:42:12 [INFO]   ✅ Page 86 processed successfully (HTML parse).
+11:42:12 [INFO]   ✅ Page 87 processed successfully (HTML parse).
+11:42:12 [INFO]   ✅ Page 88 processed successfully (HTML parse).
+11:42:12 [INFO]   ✅ Page 81 processed successfully (HTML parse).
+11:42:12 [INFO]   ✅ Page 85 processed successfully (HTML parse).
+11:42:12 [INFO]   ✅ Page 84 processed successfully (HTML parse).
+11:42:13 [INFO]   ✅ Page 89 processed successfully (HTML parse).
+11:42:13 [INFO]   ✅ Page 82 processed successfully (HTML parse).
+11:42:13 [INFO]   ✅ Page 83 processed successfully (HTML parse).
+11:42:13 [INFO]   ✅ Page 90 processed successfully (HTML parse).
+11:42:13 [INFO] 🚀 Fetching batch: Pages 91 to 100
+11:42:13 [INFO] 📄 Fetching Page 91 (Attempt 1/3)
+11:42:13 [INFO] 📄 Fetching Page 92 (Attempt 1/3)
+11:42:13 [INFO] 📄 Fetching Page 93 (Attempt 1/3)
+11:42:13 [INFO] 📄 Fetching Page 94 (Attempt 1/3)
+11:42:13 [INFO] 📄 Fetching Page 95 (Attempt 1/3)
+11:42:13 [INFO] 📄 Fetching Page 96 (Attempt 1/3)
+11:42:13 [INFO] 📄 Fetching Page 97 (Attempt 1/3)
+11:42:13 [INFO] 📄 Fetching Page 98 (Attempt 1/3)
+11:42:13 [INFO] 📄 Fetching Page 99 (Attempt 1/3)
+11:42:13 [INFO] 📄 Fetching Page 100 (Attempt 1/3)
+11:42:15 [INFO]   ✅ Page 100 processed successfully (HTML parse).
+11:42:15 [INFO]   ✅ Page 96 processed successfully (HTML parse).
+11:42:15 [INFO]   ✅ Page 98 processed successfully (HTML parse).
+11:42:15 [INFO]   ✅ Page 94 processed successfully (HTML parse).
+11:42:15 [INFO]   ✅ Page 95 processed successfully (HTML parse).
+11:42:15 [INFO]   ✅ Page 91 processed successfully (HTML parse).
+11:42:15 [INFO]   ✅ Page 93 processed successfully (HTML parse).
+11:42:15 [INFO]   ✅ Page 99 processed successfully (HTML parse).
+11:42:15 [INFO]   ✅ Page 92 processed successfully (HTML parse).
+11:42:16 [INFO]   ✅ Page 97 processed successfully (HTML parse).
+11:42:16 [INFO] 🚀 Fetching batch: Pages 101 to 110
+11:42:16 [INFO] 📄 Fetching Page 101 (Attempt 1/3)
+11:42:16 [INFO] 📄 Fetching Page 102 (Attempt 1/3)
+11:42:16 [INFO] 📄 Fetching Page 103 (Attempt 1/3)
+11:42:16 [INFO] 📄 Fetching Page 104 (Attempt 1/3)
+11:42:16 [INFO] 📄 Fetching Page 105 (Attempt 1/3)
+11:42:16 [INFO] 📄 Fetching Page 106 (Attempt 1/3)
+11:42:16 [INFO] 📄 Fetching Page 107 (Attempt 1/3)
+11:42:16 [INFO] 📄 Fetching Page 108 (Attempt 1/3)
+11:42:16 [INFO] 📄 Fetching Page 109 (Attempt 1/3)
+11:42:16 [INFO] 📄 Fetching Page 110 (Attempt 1/3)
+11:42:18 [INFO]   ✅ Page 101 processed successfully (HTML parse).
+11:42:18 [INFO]   ✅ Page 102 processed successfully (HTML parse).
+11:42:18 [INFO]   ✅ Page 109 processed successfully (HTML parse).
+11:42:18 [INFO]   ✅ Page 106 processed successfully (HTML parse).
+11:42:18 [INFO]   ✅ Page 104 processed successfully (HTML parse).
+11:42:18 [INFO]   ✅ Page 105 processed successfully (HTML parse).
+11:42:18 [INFO]   ✅ Page 107 processed successfully (HTML parse).
+11:42:18 [INFO]   ✅ Page 110 processed successfully (HTML parse).
+11:42:18 [INFO]   ✅ Page 103 processed successfully (HTML parse).
+11:42:18 [INFO]   ✅ Page 108 processed successfully (HTML parse).
+11:42:18 [INFO] 🛑 Stopping: Duplicate content detected on page 102.
+11:42:18 [INFO] Closing browser.
+11:42:18 [INFO] Fetching complete. Saved 101 intermediate tagged page files.
+11:42:18 [INFO] Merging unique tagged pages into: /root/TenFin/scraped_data/Final_Tender_List_2025-04-17.txt
+11:42:18 [INFO] Looking for raw pages in: /root/TenFin/scraped_data/RawPages
+11:42:18 [ERROR] 💥 CRITICAL ERROR during scraping/merging: NameError - name 'natural_sort_key' is not defined
+11:42:18 [ERROR] Traceback (most recent call last):
+  File "/root/TenFin/scraper.py", line 320, in scrape_all_pages
+    merged_count, final_output_file = await merge_and_cleanup()
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/TenFin/scraper.py", line 260, in merge_and_cleanup
+    page_files = sorted(
+                 ^^^^^^^
+  File "/root/TenFin/scraper.py", line 262, in <lambda>
+    key=lambda p: natural_sort_key(p.name)
+                  ^^^^^^^^^^^^^^^^
+NameError: name 'natural_sort_key' is not defined
+
+11:42:18 [INFO] 🏁 Scrape run failed or produced no output.
+11:42:18 [INFO]    Duration: 0:00:28.503596
+11:42:18 [INFO]    Merged 0 unique pages.
+11:42:18 [WARNING]    Final output file was not created.

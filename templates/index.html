@@ -1,20 +1,38 @@
+<!-- START OF FILE TenFin-main/templates/index.html -->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Filtered Tenders Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
+    /* Basic Reset */
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        font-size: 16px; /* Base font size */
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f1f4f9;
-      margin: 0;
-      padding: 0;
+      background-color: #f1f4f9; /* Light background */
+      color: #333; /* Default text color */
+      line-height: 1.6;
     }
 
     .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
+      max-width: 900px; /* Standard container width */
+      margin: 40px auto; /* Center container with margin */
+      padding: 25px 30px; /* Padding inside container */
+      background-color: #ffffff; /* White background for content */
+      border-radius: 8px; /* Rounded corners */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
     }
 
     .header {
@@ -22,25 +40,46 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 30px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e0e0e0; /* Separator line */
     }
 
     .header h1 {
       margin: 0;
-      font-size: 2rem;
+      font-size: 1.8rem; /* Heading size */
+      font-weight: 500;
+      color: #1a2a45; /* Darker blue heading */
     }
 
-    .btn {
-      background-color: #007bff;
-      color: white;
-      padding: 10px 18px;
-      border-radius: 6px;
-      font-weight: bold;
+    /* Unified button/link style used across templates */
+    .btn, .actions a, .actions button {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 5px;
+      font-weight: 500;
       text-decoration: none;
-      transition: background-color 0.2s ease;
+      transition: background-color 0.2s ease, box-shadow 0.2s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      color: white; /* Default text color for buttons */
     }
 
+    .btn:focus, .actions a:focus, .actions button:focus {
+        outline: 2px solid #a8c7fa; /* Focus indicator */
+        outline-offset: 2px;
+    }
+
+    /* Style for the "+ New Filter" button */
+    .btn {
+      background-color: #007bff; /* Primary blue */
+    }
     .btn:hover {
-      background-color: #0056b3;
+      background-color: #0056b3; /* Darker blue on hover */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     ul {
@@ -49,61 +88,101 @@
     }
 
     li {
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 16px 20px;
-      margin-bottom: 15px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      background-color: #ffffff;
+      border: 1px solid #e7eaf0; /* Lighter border */
+      border-radius: 6px;
+      padding: 15px 20px;
+      margin-bottom: 12px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: box-shadow 0.2s ease;
+    }
+    li:hover {
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.07); /* Hover effect */
     }
 
     .filename {
-      font-weight: bold;
-      font-size: 1.05rem;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #333;
+      overflow: hidden; /* Prevent long names from breaking layout */
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-right: 15px; /* Space between filename and actions */
+      flex-grow: 1; /* Allow filename to take available space */
     }
 
+    .actions {
+        display: inline-flex; /* Align items horizontally */
+        align-items: center; /* Vertically align items */
+        gap: 8px; /* Space between action items */
+        flex-shrink: 0; /* Prevent actions container from shrinking */
+    }
+
+    /* View/Download Links using the unified style */
     .actions a {
-      margin-left: 10px;
-      background-color: #007bff;
-      color: white;
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background-color 0.2s ease;
+      background-color: #17a2b8; /* Info blue */
     }
-
     .actions a:hover {
-      background-color: #0056b3;
+      background-color: #117a8b;
     }
 
-    *:focus {
-      outline: none;
+    /* Delete Button using the unified style */
+    .actions form button {
+        background-color: #dc3545; /* Danger red */
+        font-family: inherit; /* Ensure consistent font */
+    }
+    .actions form button:hover {
+        background-color: #c82333;
+        border-color: #bd2130;
+    }
+
+    /* Make the form display inline without affecting layout */
+    .actions form {
+        display: inline;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Style for when the list is empty */
+    .no-items {
+        text-align: center;
+        color: #6c757d; /* Muted text color */
+        padding: 25px 20px; /* More padding */
+        font-style: italic;
+        border: 1px dashed #d3d9e0; /* Dashed border for empty state */
+        background-color: #f8f9fa; /* Slightly different background */
     }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
-      <h1>Tender Finder</h1>
-      <a href="/run-filter" class="btn">+ New Filter</a>
+      <h1>Tender Finder Dashboard</h1> {# Updated Title #}
+      <a href="{{ url_for('run_filter_form') }}" class="btn">+ New Filter</a>
     </div>
 
     <ul>
+      {# Loop through subdirectories (filtered tender sets) #}
       {% for subdir in subdirs %}
         <li>
-          <span class="filename">{{ subdir }}</span>
+          <span class="filename" title="{{ subdir }}">{{ subdir }}</span> {# Add title for full name on hover #}
           <span class="actions">
-            <a href="/view/{{ subdir }}">View</a>
-            <a href="/download/{{ subdir }}">Download</a>
-            <a href="/delete/{{ subdir }}" onclick="return confirm('Are you sure you want to delete this tender detail?');">Delete</a>
+            <a href="{{ url_for('view_tenders', subdir=subdir) }}" title="View {{ subdir }}">View</a>
+            <a href="{{ url_for('download_tender_excel', subdir=subdir) }}" title="Download {{ subdir }} as Excel">Download</a>
+            <!-- Form to send POST request for delete -->
+            <form action="{{ url_for('delete_tender_set', subdir=subdir) }}" method="post" style="display: inline;">
+              <button type="submit" title="Delete {{ subdir }}" onclick="return confirm('Are you sure you want to permanently delete the tender set \'{{ subdir }}\'? This action cannot be undone.');">Delete</button>
+            </form>
           </span>
         </li>
+      {% else %}
+        {# Displayed if the subdirs list is empty #}
+        <li class="no-items">No filtered tender sets found. Run a new filter to create one.</li>
       {% endfor %}
     </ul>
   </div>
 </body>
 </html>
+<!-- END OF FILE TenFin-main/templates/index.html -->

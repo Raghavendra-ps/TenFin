@@ -1,9 +1,12 @@
-import os
+# --- START OF FILE TenFin-main/filter_engine.py ---
+
 import re
+import json
 from datetime import datetime
+from pathlib import Path
+from typing import List, Dict, Optional, Any
 
-TENDER_BLOCK_PATTERN = re.compile(r"^\d+\.\s*$")
-
+# --- Constants ---
 INDIAN_STATES = [
     "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
     "Goa", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka",
@@ -14,123 +17,183 @@ INDIAN_STATES = [
     "Chandigarh", "Andaman and Nicobar Islands", "Dadra and Nagar Haveli and Daman and Diu", "Lakshadweep"
 ]
 
-def parse_tender_blocks(file_path):
-    with open(file_path, "r", encoding="utf-8") as f:
-        lines = f.readlines()
+# --- Regex for Tag Extraction (Case-insensitive tag names, non-greedy content) ---
+# This version makes the tag names case-insensitive ([Tt]itle) and ensures robustness
+TAG_REGEX = {
+    "Date": re.compile(r"<[Dd][Aa][Tt][Ee]>\s*(.*?)\s*</[Dd][Aa][Tt][Ee]>", re.DOTALL),
+    "Title": re.compile(r"<[Tt][Ii][Tt][Ll][Ee]>\s*(.*?)\s*</[Tt][Ii][Tt][Ll][Ee]>", re.DOTALL),
+    "ID": re.compile(r"<[Ii][Dd]>\s*(.*?)\s*</[Ii][Dd]>", re.DOTALL),
+    "Department": re.compile(r"<[Dd][Ee][Pp][Aa][Rr][Tt][Mm][Ee][Nn][Tt]>\s*(.*?)\s*</[Dd][Ee][Pp][Aa][Rr][Tt][Mm][Ee][Nn][Tt]>", re.DOTALL),
+}
 
-    blocks = []
-    current_block = []
+def parse_tender_blocks_from_tagged_file(file_path: Path) -> List[str]:
+    """Reads the file and splits it into tagged tender blocks using delimiters."""
+    if not file_path.is_file():
+        print(f"[Filter Engine] ERROR: Tender source file not found at {file_path}")
+        return []
+    try:
+        # Read the whole content at once
+        content = file_path.read_text(encoding="utf-8", errors='ignore')
+    except Exception as e:
+        print(f"[Filter Engine] ERROR: Failed to read file {file_path}: {e}")
+        return []
 
-    for line in lines:
-        if TENDER_BLOCK_PATTERN.match(line.strip()):
-            if current_block:
-                blocks.append(current_block)
-            current_block = [line.strip()]
-        else:
-            current_block.append(line.strip())
+    # Split based on the start delimiter, filter out potential empty strings from start/end
+    raw_blocks = [block for block in content.split("--- TENDER START ---") if block.strip()]
 
-    if current_block:
-        blocks.append(current_block)
+    processed_blocks: List[str] = []
+    for raw_block in raw_blocks:
+        # Remove the end delimiter and surrounding whitespace robustly
+        block_content = re.sub(r"--- TENDER END ---.*", "", raw_block, flags=re.DOTALL).strip()
+        if block_content:
+            processed_blocks.append(block_content)
 
-    print("TOTAL BLOCKS PARSED:", len(blocks))
-    for block in blocks:
-        print("\n".join(block))
-        print("-" * 50)
+    print(f"[Filter Engine] DEBUG: Split into {len(processed_blocks)} tagged blocks from {file_path.name}")
+    return processed_blocks
 
-    return blocks
 
-def extract_tender_info(block):
-    tender = {
-        "start_date": "",
-        "end_date": "",
-        "opening_date": "",
-        "title": "",
-        "tender_id": "",
-        "department": "",
-        "state": ""
+def extract_tender_info_from_tagged_block(block_text: str) -> Dict[str, Any]:
+    """
+    Extracts structured info from a pre-tagged block of text using revised regex.
+    Maps extracted data to keys expected by the dashboard template. Includes Debugging.
+    """
+    print("\n[Filter Engine] --- EXTRACTING FROM BLOCK ---") # DEBUG
+    print(f"Block Length: {len(block_text)}") # DEBUG
+    print(block_text[:500] + "..." if len(block_text) > 500 else block_text) # Print start of block
+    print("[Filter Engine] -----------------------------") # DEBUG
+
+    tender: Dict[str, Any] = {
+        "start_date": "N/A", "end_date": "N/A", "opening_date": "N/A",
+        "title": "N/A", "tender_id": "N/A", "department": "N/A", "state": "N/A",
     }
 
-    date_lines = block[:3]
-    tender["start_date"] = date_lines[0] if len(date_lines) > 0 else ""
-    tender["end_date"] = date_lines[1] if len(date_lines) > 1 else ""
-    tender["opening_date"] = date_lines[2] if len(date_lines) > 2 else ""
+    # Extract Dates using findall
+    try:
+        dates = TAG_REGEX["Date"].findall(block_text)
+        print(f"[Filter Engine] DEBUG Found Dates: {dates}") # DEBUG
+        if len(dates) > 0: tender["start_date"] = dates[0].strip()
+        if len(dates) > 1: tender["end_date"] = dates[1].strip()
+        if len(dates) > 2: tender["opening_date"] = dates[2].strip()
+    except Exception as e:
+        print(f"[Filter Engine] ERROR extracting Dates: {e}")
 
-    for line in block:
-        if line.startswith("[") and "]" in line:
-            if not tender["title"]:
-                tender["title"] = line.strip("[]")
-            elif "tender" in line.lower():
-                tender["tender_id"] = line.strip("[]")
-        if "department" in line.lower():
-            tender["department"] = line
-        if any(state.lower() in line.lower() for state in INDIAN_STATES):
-            tender["state"] = line.strip()
+    # Extract Title, ID, Department using search
+    try:
+        title_match = TAG_REGEX["Title"].search(block_text)
+        print(f"[Filter Engine] DEBUG Title Match: {title_match}") # DEBUG
+        if title_match: tender["title"] = title_match.group(1).strip()
+    except Exception as e:
+         print(f"[Filter Engine] ERROR extracting Title: {e}")
 
-    print("TENDER EXTRACTED:", tender)
+    try:
+        id_match = TAG_REGEX["ID"].search(block_text)
+        print(f"[Filter Engine] DEBUG ID Match: {id_match}") # DEBUG
+        if id_match: tender["tender_id"] = id_match.group(1).strip()
+    except Exception as e:
+         print(f"[Filter Engine] ERROR extracting ID: {e}")
+
+    try:
+        dept_match = TAG_REGEX["Department"].search(block_text)
+        print(f"[Filter Engine] DEBUG Department Match: {dept_match}") # DEBUG
+        if dept_match: tender["department"] = dept_match.group(1).strip()
+    except Exception as e:
+        print(f"[Filter Engine] ERROR extracting Department: {e}")
+
+
+    # Extract State from Department text
+    if tender["department"] != "N/A":
+        try:
+            for state_name in INDIAN_STATES:
+                # Using word boundary \b to avoid partial matches within words
+                if re.search(r'\b' + re.escape(state_name) + r'\b', tender["department"], re.IGNORECASE):
+                    tender["state"] = state_name
+                    break
+        except Exception as e:
+             print(f"[Filter Engine] ERROR extracting State: {e}")
+
+
+    print(f"[Filter Engine] DEBUG Resulting Tender Dict: {tender}") # DEBUG
     return tender
 
-def matches_filters(tender, keywords, use_regex, state, start_date, end_date):
-    if state and state.lower() not in tender["state"].lower():
+
+def matches_filters(tender: Dict[str, Any], keywords: List[str], use_regex: bool, state_filter: Optional[str], start_date_str: Optional[str], end_date_str: Optional[str]) -> bool:
+    """Checks if a parsed tender dictionary matches the filter criteria."""
+    # (No changes needed here)
+    # State Filter
+    if state_filter and state_filter.lower() not in tender.get("state", "N/A").lower():
         return False
-
-    if start_date:
+    # Date Filtering
+    tender_datetime_format = "%d-%b-%Y %I:%M %p"
+    filter_date_format = "%Y-%m-%d"
+    if start_date_str:
         try:
-            tender_start = datetime.strptime(tender["start_date"], "%d-%m-%Y")
-            filter_start = datetime.strptime(start_date, "%Y-%m-%d")
-            if tender_start < filter_start:
-                return False
-        except Exception as e:
-            print("Start date parse error:", e)
-
-    if end_date:
+            filter_start_date = datetime.strptime(start_date_str, filter_date_format).date()
+            tender_start_str = tender.get("start_date", "")
+            if tender_start_str and tender_start_str != "N/A":
+                tender_start_dt = datetime.strptime(tender_start_str, tender_datetime_format)
+                if tender_start_dt.date() < filter_start_date: return False
+        except ValueError: pass
+    if end_date_str:
         try:
-            tender_end = datetime.strptime(tender["end_date"], "%d-%m-%Y")
-            filter_end = datetime.strptime(end_date, "%Y-%m-%d")
-            if tender_end > filter_end:
-                return False
-        except Exception as e:
-            print("End date parse error:", e)
-
+            filter_end_date = datetime.strptime(end_date_str, filter_date_format).date()
+            tender_end_str = tender.get("end_date", "")
+            if tender_end_str and tender_end_str != "N/A":
+                tender_end_dt = datetime.strptime(tender_end_str, tender_datetime_format)
+                if tender_end_dt.date() < filter_end_date: return False
+        except ValueError: pass
+    # Keyword Filter
+    search_content = " ".join(str(tender.get(k, "")) for k in ["title", "tender_id", "department", "state"])
     if keywords:
-        content = " ".join(tender.values())
-        if use_regex:
-            try:
-                return any(re.search(kw, content, re.IGNORECASE) for kw in keywords)
-            except re.error as e:
-                print("Regex error:", e)
-                return False
-        else:
-            return any(kw.lower() in content.lower() for kw in keywords)
-
+        if not search_content: return False
+        try:
+            if use_regex:
+                if not any(re.search(kw, search_content, re.IGNORECASE) for kw in keywords): return False
+            else:
+                content_lower = search_content.lower()
+                if not any(kw.lower() in content_lower for kw in keywords): return False
+        except re.error as e:
+            print(f"[Filter Engine] ERROR: Invalid regex: {e}")
+            return False
     return True
 
-def run_filter(base_folder, tender_filename, keywords, use_regex, filter_name, state, start_date, end_date):
-    print("=== FILTER CONFIG ===")
-    print("Keywords:", keywords)
-    print("Regex?:", use_regex)
-    print("State Filter:", state)
-    print("Start Date:", start_date)
-    print("End Date:", end_date)
-    print("======================")
 
-    tender_path = os.path.join(base_folder, tender_filename)
-    blocks = parse_tender_blocks(tender_path)
+def run_filter(base_folder: Path, tender_filename: str, keywords: list, use_regex: bool, filter_name: str, state: str, start_date: str, end_date: str) -> str:
+    """Runs the filtering process using tagged input file and saves results as JSON."""
+    # (No changes needed here)
+    print("--- Running Filter (Engine v3.2: Debug Tag Extraction) ---")
+    print(f"  Source File: {tender_filename}")
+    # ... (rest of print statements) ...
+    print("-----------------------------------------------------------")
 
-    filtered_blocks = []
+    tender_path = base_folder / tender_filename
+    tagged_blocks = parse_tender_blocks_from_tagged_file(tender_path)
+    if not tagged_blocks: print("[Filter Engine] WARNING: No tender blocks parsed from the source file.")
 
-    for block in blocks:
-        tender = extract_tender_info(block)
-        if matches_filters(tender, keywords, use_regex, state, start_date, end_date):
-            print("✅ MATCHED:", tender["title"])
-            filtered_blocks.append("\n".join(block))
-        else:
-            print("❌ NOT MATCHED:", tender["title"])
+    matching_tender_dictionaries: List[Dict[str, Any]] = []
+    processed_count = 0
+    match_count = 0
+    for block_text in tagged_blocks:
+        processed_count += 1
+        tender_info = extract_tender_info_from_tagged_block(block_text)
+        if matches_filters(tender_info, keywords, use_regex, state, start_date, end_date):
+            matching_tender_dictionaries.append(tender_info)
+            match_count += 1
 
-    output_folder = os.path.join(base_folder, "Filtered Tenders", f"{filter_name} Tenders")
-    os.makedirs(output_folder, exist_ok=True)
+    print(f"[Filter Engine] Processed {processed_count} tagged blocks, found {match_count} matching tenders.")
+    output_folder = base_folder / "Filtered Tenders" / f"{filter_name} Tenders"
+    output_folder.mkdir(parents=True, exist_ok=True)
+    output_filename = "Filtered_Tenders.json"
+    output_path = output_folder / output_filename
+    try:
+        print(f"[Filter Engine] Saving {match_count} matched tender dictionaries to: {output_path}")
+        with open(output_path, "w", encoding="utf-8") as f:
+            json.dump(matching_tender_dictionaries, f, indent=2, ensure_ascii=False)
+    except TypeError as e:
+        print(f"[Filter Engine] ERROR: Failed to serialize tender data to JSON for {output_path}: {e}")
+        raise IOError(f"Failed to serialize data to JSON: {e}") from e
+    except Exception as e:
+        print(f"[Filter Engine] ERROR: Failed to write filtered output JSON file {output_path}: {e}")
+        raise IOError(f"Failed to write output JSON file: {e}") from e
+    return str(output_path.resolve())
 
-    output_path = os.path.join(output_folder, "Filtered_Tenders.txt")
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write("\n\n".join(filtered_blocks))
-
-    return output_path
+# --- END OF FILE TenFin-main/filter_engine.py ---
